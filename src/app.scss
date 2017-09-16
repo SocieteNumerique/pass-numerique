@@ -55,6 +55,11 @@ input, select {
         width: 21px;
         height: 21px;
     }
+
+    &--emoji {
+        width: 84px;
+        height: 84px;
+    }
 }
 
 .page {
@@ -67,7 +72,7 @@ input, select {
 
     &__button {
         display: block;
-        padding: 16px;
+        padding: 16px 25px;
         border: 0;
         box-sizing: border-box;
         font-size: 16px;
@@ -80,6 +85,18 @@ input, select {
     }
 }
 
+<<<<<<< Updated upstream
+=======
+.content {
+    padding: 30px 15px;
+}
+
+.legalities {
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+>>>>>>> Stashed changes
 /*
  * Footer
  */
@@ -152,8 +169,32 @@ input, select {
     &__subtitle {
         margin: 0 0 25px 0;
     }
+}
 
-    &__legalities {
-        font-size: 12px;
+/*
+ * Congratulations
+ */
+.congrats {
+    &__icon {
+        margin: 0 0 10px 0;
+    }
+
+    &__title {
+        font-family: $font-gillsans;
+        font-size: 24px;
+        margin: 0 0 10px 0;
+        padding: 0;
+    }
+
+    &__subtitle {
+        font-family: $font-gillsans;
+        font-size: 16px;
+        margin: 0 0 20px 0;
+    }
+
+    &__label {
+        font-size: 14px;
+        margin: 0 0 15px 0;
+        padding: 0 20px;
     }
 }
