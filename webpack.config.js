@@ -7,7 +7,7 @@ Encore
     .setOutputPath('public/')
     .setPublicPath('/')
     .cleanupOutputBeforeBuild()
-    .addEntry('app', './src/app.js')
+    .addEntry('app', './src/loader.js')
     .enableSassLoader()
     .enablePreactPreset()
     .enableVersioning(Encore.isProduction())
@@ -18,7 +18,7 @@ Encore
 	}))
 	.addPlugin(new HtmlWebpackHarddiskPlugin())
 	.addPlugin(new FaviconsWebpackPlugin({
-		logo: './src/favicon.png',
+		logo: './src/images/favicon.png',
 		prefix: 'meta-icons-[hash]/',
 		emitStats: false,
 		statsFilename: 'iconstats-[hash].json',

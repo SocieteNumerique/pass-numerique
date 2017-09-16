@@ -1,6 +1,23 @@
-import { h, render } from 'preact'
-import './app.scss'
+import { h, Component } from 'preact';
+import { Router } from 'preact-router';
 
-import App from './components/app';
+import Home from './pages/home';
+import Footer from './components/footer';
 
-render(<App />, document.getElementById('app'));
+export default class App extends Component {
+    render() {
+        return (
+            <div className="container">
+                <div className="page">
+                    <div className="content">
+                        <Router>
+                            <Home path="/" />
+                        </Router>
+                    </div>
+                </div>
+
+                <Footer />
+            </div>
+        )
+    }
+};
