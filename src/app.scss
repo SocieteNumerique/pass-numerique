@@ -31,9 +31,6 @@ input, select {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 100%;
-    max-width: 375px;
-    margin: 0 auto;
 }
 
 .icon {
@@ -62,13 +59,76 @@ input, select {
     }
 }
 
-.page {
-    padding: 30px 15px;
+.modal, .page {
     align-self: flex-start;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 100%;
+}
+
+.modal {
+    background: #32a5ca;
+
+    &__close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 20px 30px;
+
+        a {
+            text-decoration: none;
+
+            &, &:visited, &:focus, &:hover {
+                color: #fff;
+            }
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__content {
+        max-width: 375px;
+        margin: 0 auto;
+    }
+
+    &__title {
+        font-family: $font-gillsans;
+        font-size: 24px;
+        margin: 0 0 10px 0;
+        padding: 0 40px;
+    }
+
+    &__subtitle {
+        font-family: $font-roboto;
+        font-size: 16px;
+        margin: 0 0 25px 0;
+        padding: 0 40px;
+    }
+
+    &__field {
+        padding: 0 20px;
+
+        textarea {
+            padding: 30px;
+            border: 0;
+            height: 250px;
+            box-sizing: border-box;
+            font-size: 20px;
+            font-family: "Source Code Pro", "Menlo", "Courier New", monospace;
+            background: #fff;
+            width: 100%;
+            color: #666666;
+        }
+    }
+}
+
+.page {
+    max-width: 375px;
+    margin: 0 auto;
 
     &__button {
         display: block;
