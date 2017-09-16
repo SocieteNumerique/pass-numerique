@@ -19,7 +19,9 @@ export default class Footer extends Component {
                             <IconTwitter />
                         </a>
 
-                        <button type="button" className="footer__button footer__button--iframe">
+                        <button type="button"
+                                className="footer__button footer__button--iframe"
+                                onClick={this.props.onModalClick}>
                             Copier le code d’intégration
                         </button>
                     </div>
