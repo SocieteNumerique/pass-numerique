@@ -85,8 +85,6 @@ input, select {
     }
 }
 
-<<<<<<< Updated upstream
-=======
 .content {
     padding: 30px 15px;
 }
@@ -96,7 +94,6 @@ input, select {
     font-size: 12px;
 }
 
->>>>>>> Stashed changes
 /*
  * Footer
  */
@@ -196,5 +193,27 @@ input, select {
         font-size: 14px;
         margin: 0 0 15px 0;
         padding: 0 20px;
+    }
+}
+
+/*
+ * No exoneration
+ */
+.noexo {
+    &__icon {
+        margin: 0 0 10px 0;
+    }
+
+    &__title {
+        font-family: $font-gillsans;
+        font-size: 24px;
+        margin: 0 0 10px 0;
+        padding: 0;
+    }
+
+    &__subtitle {
+        font-family: $font-gillsans;
+        font-size: 18px;
+        margin: 0 0 20px 0;
     }
 }
