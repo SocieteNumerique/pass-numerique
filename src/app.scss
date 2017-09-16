@@ -217,3 +217,33 @@ input, select {
         margin: 0 0 20px 0;
     }
 }
+
+/*
+ * Result
+ */
+.result {
+    &__title {
+        font-family: $font-gillsans;
+        font-size: 24px;
+        margin: 0 0 40px 0;
+        padding: 0;
+    }
+
+    &__years {
+        font-family: $font-roboto;
+        font-size: 24px;
+        font-weight: 500;
+        margin: 0 0 40px 0;
+    }
+
+    &__year {
+        display: inline-block;
+        margin: 0 0 15px 0;
+        padding: 2px 13px;
+
+        &--highlight {
+            background-color: #edf861;
+            color: #5d5d5d;
+        }
+    }
+}

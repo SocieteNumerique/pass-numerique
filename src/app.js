@@ -6,6 +6,7 @@ import Footer from './components/footer';
 import Home from './pages/home';
 import Congratulations from './pages/congratulations';
 import NoExoneration from './pages/no-exoneration';
+import Result from './pages/result';
 
 export default class App extends Component {
     render() {
@@ -17,6 +18,7 @@ export default class App extends Component {
                             <Home path="/" />
                             <Congratulations path="/congratulations" />
                             <NoExoneration path="/no-exoneration" />
+                            <Result path="/result" />
                         </Router>
 
                         <div className="legalities">
