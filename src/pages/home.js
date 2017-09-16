@@ -33,12 +33,6 @@ export default class Home extends Component {
                         C'est parti !
                     </button>
                 </div>
-
-                <div className="home__legalities">
-                    Le calcul effectué est purement anonyme et n’a qu’une valeur indicative.
-                    Il dépend uniquement des éléments en notre possession et ne préjuge en rien
-                    du montant qui sera finalement retenu par l’administration fiscale.
-                </div>
             </div>
         )
     }
