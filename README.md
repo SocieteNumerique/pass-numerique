@@ -9,3 +9,7 @@ A *En Marche !*, nous avons fait le choix de l'open-source car cela s'accorde av
 n'existe que par ses membres. Nous serions donc bien évidemment ravis que vous songiez à contribuer au projet.
 
 Questions ? Besoin d'aide ? Rejoignez-nous dans notre [Slack](https://publicslack.com/slacks/en-marche-dev/invites/new).
+
+## Pour commencer
+* `npm install`
+* `npm run dev`
