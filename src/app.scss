@@ -31,9 +31,6 @@ input, select {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 100%;
-    max-width: 375px;
-    margin: 0 auto;
 }
 
 .icon {
@@ -58,12 +55,14 @@ input, select {
 }
 
 .page {
-    padding: 30px 15px;
     align-self: flex-start;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 100%;
+    max-width: 375px;
+    margin: 0 auto;
 
     &__button {
         display: block;
@@ -78,6 +77,10 @@ input, select {
         border-radius: 3px;
         color: #fff;
     }
+}
+
+.content {
+    padding: 30px 15px;
 }
 
 /*
