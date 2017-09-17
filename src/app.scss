@@ -267,6 +267,12 @@ select {
     &__subtitle {
         margin: 0 0 25px 0;
     }
+
+    &__field input[type="number"] {
+        @media (max-width: $width-iphone5) {
+            font-size: 14px;
+        }
+    }
 }
 
 /*
