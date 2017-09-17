@@ -32,12 +32,6 @@ export default class App extends Component {
                                 <NoExoneration path="/no-exoneration" />
                                 <Result path="/result/:tax2018/:tax2019/:tax2020" />
                             </Router>
-
-                            <div className="legalities">
-                                Le calcul effectué est purement anonyme et n’a qu’une valeur indicative.
-                                Il dépend uniquement des éléments en notre possession et ne préjuge en rien
-                                du montant qui sera finalement retenu par l’administration fiscale.
-                            </div>
                         </div>
                     </div>
                 )}
