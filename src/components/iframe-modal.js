@@ -17,7 +17,7 @@ export default class IframeModal extends Component {
                     </h1>
 
                     <div className="modal__subtitle">
-                        Copiez ce code et ajoutez-le
+                        Copiez ce code et ajoutez-le<br/>
                         à votre site ou blog.
                     </div>
 

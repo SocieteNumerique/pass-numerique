@@ -1,17 +1,5 @@
 @import "fonts/fonts";
-$height-app: 650px;
-$button-blue: #0f4dcf;
-
-@mixin movement {
-    transition: .2s;
-
-    &:hover,
-    &:active,
-    &:focus {
-        transform: translate(0, -1px);
-        box-shadow: 0 2px 4px 0 rgba($button-blue,.2);
-    }
-}
+@import "styles/vars-and-mixins";
 
 $height-app: 650px;
 
@@ -27,7 +15,7 @@ body {
     margin: 0 auto;
     background: linear-gradient(206deg, #306ffb, #36d1dc) no-repeat fixed #306ffb;
     font-family: $font-roboto;
-    font-size: 16px;
+    @include text--default;
     color: #fff;
     text-align: center;
 }
@@ -38,12 +26,13 @@ input, select {
     border: 0;
     height: 55px;
     box-sizing: border-box;
-    font-size: 16px;
     font-family: $font-roboto;
     background: #fff;
+    color: #444;
     width: 100%;
     margin-bottom: 13px;
     border-radius: 3px;
+    @include text--default;
     @include movement;
 }
 
@@ -133,7 +122,7 @@ select {
 
     &__subtitle {
         font-family: $font-roboto;
-        font-size: 16px;
+        @include text--default;
         margin: 0 0 25px 0;
         padding: 0 40px;
     }
@@ -164,7 +153,7 @@ select {
         padding: 16px 25px;
         border: 0;
         box-sizing: border-box;
-        font-size: 16px;
+        @include text--default;
         font-family: $font-roboto;
         background: $button-blue;
         width: 100%;
@@ -176,6 +165,12 @@ select {
 
         &:hover {
             background-color: #0c48c5;
+        }
+
+        &--small {
+            font-size: 14px;
+            text-decoration: none;
+            padding: 6px;
         }
     }
 }
@@ -264,8 +259,7 @@ select {
  */
 .home {
     &__title {
-        font-family: $font-gillsans;
-        font-size: 24px;
+        @include h1;
         margin: 0 0 10px 0;
         padding: 0;
     }
@@ -291,13 +285,12 @@ select {
     }
 
     &__subtitle {
-        font-family: $font-gillsans;
-        font-size: 16px;
-        margin: 0 0 20px 0;
+        @include h2;
+        margin-bottom: 20px;
     }
 
     &__label {
-        font-size: 14px;
+        @include text--default;
         margin: 0 0 15px 0;
         padding: 0 20px;
     }
@@ -312,16 +305,14 @@ select {
     }
 
     &__title {
-        font-family: $font-gillsans;
-        font-size: 24px;
+        @include h1;
         margin: 0 0 10px 0;
         padding: 0;
     }
 
     &__subtitle {
-        font-family: $font-gillsans;
-        font-size: 18px;
-        margin: 0 0 20px 0;
+        @include h2;
+        margin-bottom: 50px;
     }
 }
 
@@ -330,8 +321,7 @@ select {
  */
 .result {
     &__title {
-        font-family: $font-gillsans;
-        font-size: 24px;
+        @include h1;
         margin: 0 0 40px 0;
         padding: 0;
     }
