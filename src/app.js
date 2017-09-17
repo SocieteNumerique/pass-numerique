@@ -28,7 +28,7 @@ export default class App extends Component {
                         <div className="content">
                             <Router>
                                 <Home path="/" />
-                                <Congratulations path="/congratulations" />
+                                <Congratulations path="/congratulations/:status/:dependents/:income" />
                                 <NoExoneration path="/no-exoneration" />
                                 <Result path="/result" />
                             </Router>
