@@ -8,23 +8,27 @@ describe('Calculator', () => {
     let scenariosMatrix = [
         //  Status                          Dependents   Income   Exempted?  Prev tax    2018    2019    2020
         [   Calculator.STATUS_SINGLE,       0,           2450,    true,      1000,       700,    350,    0       ],
-        [   Calculator.STATUS_SINGLE,       0,           2550,    true,      1000,       867,    711,    556     ],
+        [   Calculator.STATUS_SINGLE,       0,           2550,    true,      1000,       867,    712,    556     ],
         [   Calculator.STATUS_SINGLE,       0,           2650,    false,     1000,       1000,   1000,   1000    ],
 
         [   Calculator.STATUS_SINGLE,       3,           5600,    true,      1000,       700,    350,    0       ],
-        [   Calculator.STATUS_SINGLE,       3,           5750,    true,      1000,       870,    719,    568     ],
+        [   Calculator.STATUS_SINGLE,       3,           5750,    true,      1000,       871,    719,    568     ],
         [   Calculator.STATUS_SINGLE,       3,           5900,    false,     1000,       1000,   1000,   1000    ],
 
-        [   Calculator.STATUS_CONCUBINAGE,  1,           3200,    true,      1000,       700,    350,    0       ],
-        [   Calculator.STATUS_CONCUBINAGE,  1,           3300,    true,      1000,       832,    636,    440     ],
-        [   Calculator.STATUS_CONCUBINAGE,  1,           3400,    false,     1000,       1000,   1000,   1000    ],
+        [   Calculator.STATUS_CONCUBINAGE,  0,           4900,    true,      1000,       700,    350,    0       ],
+        [   Calculator.STATUS_CONCUBINAGE,  0,           5050,    true,      1000,       786,    536,    286     ],
+        [   Calculator.STATUS_CONCUBINAGE,  0,           5200,    false,     1000,       1000,   1000,   1000    ],
 
-        [   Calculator.STATUS_CONCUBINAGE,  '0+',        4900,    true,      1000,       700,    350,    0       ],
-        [   Calculator.STATUS_CONCUBINAGE,  '0+',        5100,    true,      1000,       867,    711,    556     ],
-        [   Calculator.STATUS_CONCUBINAGE,  '0+',        5300,    false,     1000,       1000,   1000,   1000    ],
+        [   Calculator.STATUS_CONCUBINAGE,  '0+',        5700,    true,      1000,       700,    350,    0       ],
+        [   Calculator.STATUS_CONCUBINAGE,  '0+',        5800,    true,      1000,       802,    570,    338     ],
+        [   Calculator.STATUS_CONCUBINAGE,  '0+',        6000,    false,     1000,       1000,   1000,   1000    ],
+
+        [   Calculator.STATUS_CONCUBINAGE,  1,           5000,    true,      1000,       700,    350,    0       ],
+        [   Calculator.STATUS_CONCUBINAGE,  1,           5150,    true,      1000,       798,    562,    326     ],
+        [   Calculator.STATUS_CONCUBINAGE,  1,           5300,    false,     1000,       1000,   1000,   1000    ],
 
         [   Calculator.STATUS_MARRIED,      2,           5000,    true,      1000,       700,    350,    0       ],
-        [   Calculator.STATUS_MARRIED,      2,           5200,    true,      1000,       879,    737,    596     ],
+        [   Calculator.STATUS_MARRIED,      2,           5200,    true,      1000,       879,    738,    596     ],
         [   Calculator.STATUS_MARRIED,      2,           5400,    false,     1000,       1000,   1000,   1000    ],
 
         [   Calculator.STATUS_MARRIED,      4,           7300,    true,      1000,       700,    350,    0       ],

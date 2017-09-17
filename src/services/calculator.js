@@ -15,15 +15,15 @@ export default class Calculator {
 
         if (yearlyReference <= thresholds.low) {
             return {
-                2018: previousTax * 0.7,
-                2019: previousTax * 0.35,
+                2018: Math.ceil(previousTax * 0.7),
+                2019: Math.ceil(previousTax * 0.35),
                 2020: 0,
             };
         }
 
         if (yearlyReference <= thresholds.high) {
             let compute = (rate) => {
-                return Math.round(
+                return Math.ceil(
                     previousTax * (1 - (rate * (thresholds.high - yearlyReference) / (thresholds.high - thresholds.low)))
                 );
             };

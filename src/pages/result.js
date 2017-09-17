@@ -27,7 +27,7 @@ export default class Result extends Component {
                 </div>
 
                 <div>
-                    <a href="/" className="page__button page__button--small">Recommencer</a>
+                    <a href="/" className="page__button page__button--small startover startover--reduction">Recommencer</a>
                 </div>
             </div>
         )
