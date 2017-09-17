@@ -8,8 +8,8 @@ export default class Home extends Component {
         super(props);
 
         this.state = {
-            status: Calculator.STATUS_SINGLE,
-            dependents: '0',
+            status: null,
+            dependents: null,
             income: null,
             error: null,
         };
@@ -46,6 +46,22 @@ export default class Home extends Component {
     }
 
     handleButtonClick() {
+        if (!this.state.status) {
+            this.setState({
+                error: 'Votre situation familiale est requise',
+            });
+
+            return;
+        }
+
+        if (!this.state.dependents) {
+            this.setState({
+                error: 'Votre nombre de personnes à charge est requis',
+            });
+
+            return;
+        }
+
         if (!this.state.income) {
             this.setState({
                 error: 'Votre revenu mensuel est requis',
