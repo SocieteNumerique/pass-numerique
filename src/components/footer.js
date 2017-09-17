@@ -1,5 +1,7 @@
 import { h, Component } from 'preact';
 
+import Sharer from '../services/sharer';
+
 import IconFacebook from './icon-facebook';
 import IconTwitter from './icon-twitter';
 import IconGithub from './icon-github';
@@ -7,17 +9,21 @@ import IconEnMarche from './icon-en-marche';
 
 export default class Footer extends Component {
     render() {
+        const sharer = new Sharer();
+
         return (
             <footer className="footer">
                 <div className="footer__content">
                     <div className="footer__buttons">
-                        <a href="" className="footer__button footer__button--facebook">
+                        <span className="footer__button footer__button--facebook"
+                              onClick={() => sharer.share('facebook', 'https://simuletataxe.fr', 'Simule ta taxe d\'habitation !')}>
                             <IconFacebook />
-                        </a>
+                        </span>
 
-                        <a href="" className="footer__button footer__button--twitter">
+                        <span className="footer__button footer__button--twitter"
+                              onClick={() => sharer.share('twitter', 'https://simuletataxe.fr', 'Simule ta taxe d\'habitation !')}>
                             <IconTwitter />
-                        </a>
+                        </span>
 
                         <button type="button"
                                 className="footer__button footer__button--iframe"
