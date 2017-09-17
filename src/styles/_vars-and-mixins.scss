@@ -1,0 +1,18 @@
+$height-app: 650px;
+$button-blue: #0f4dcf;
+
+@mixin movement {
+    transition: .2s;
+
+    &:hover,
+    &:active,
+    &:focus {
+        transform: translate(0, -1px);
+        box-shadow: 0 2px 4px 0 rgba($button-blue,.2);
+    }
+}
+
+@mixin text--default {
+    font-size: 16px;
+    line-height: 24px;
+}
