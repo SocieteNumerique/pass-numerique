@@ -164,6 +164,12 @@ select {
         &:hover {
             background-color: #0c48c5;
         }
+
+        &--small {
+            font-size: 14px;
+            text-decoration: none;
+            padding: 6px;
+        }
     }
 }
 
@@ -309,7 +315,7 @@ select {
     &__subtitle {
         font-family: $font-gillsans;
         font-size: 18px;
-        margin: 0 0 20px 0;
+        margin: 0 0 50px 0;
     }
 }
 

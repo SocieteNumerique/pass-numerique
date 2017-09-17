@@ -17,6 +17,10 @@ export default class NoExoneration extends Component {
                 <h2 className="noexo__subtitle">
                     Mais vous contribuez à l'investissement dans votre commune, félicitations !
                 </h2>
+
+                <div>
+                    <a href="/" className="page__button page__button--small">Recommencer</a>
+                </div>
             </div>
         )
     }

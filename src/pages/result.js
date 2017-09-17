@@ -25,6 +25,10 @@ export default class Result extends Component {
                         {this.props.tax2020} € en 2020
                     </div>
                 </div>
+
+                <div>
+                    <a href="/" className="page__button page__button--small">Recommencer</a>
+                </div>
             </div>
         )
     }
