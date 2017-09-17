@@ -84,7 +84,7 @@ export default class Home extends Component {
                         <option value={Calculator.STATUS_SINGLE}>Je suis célibataire</option>
                         <option value={Calculator.STATUS_MARRIED}>Je suis marié(e) ou pacsé(e)</option>
                         <option value={Calculator.STATUS_CONCUBINAGE}>Je suis en concubinage/colocation</option>
-                        <option value={Calculator.STATUS_WIDOW}>Je suis en veuf/veuve</option>
+                        <option value={Calculator.STATUS_WIDOW}>Je suis veuf/veuve</option>
                     </select>
                 </div>
 
