@@ -5,7 +5,7 @@ export default class Result extends Component {
         return (
             <div className="result">
                 <h1 className="result__title">
-                    Ma taxe d’habitation sera de ...
+                    Ma taxe d’habitation<br/>sera de ...
                 </h1>
 
                 <div className="result__years">
@@ -24,6 +24,10 @@ export default class Result extends Component {
                     <div className="result__year result__year--highlight">
                         {this.props.tax2020} € en 2020
                     </div>
+                </div>
+
+                <div>
+                    <a href="/" className="page__button page__button--small">Recommencer</a>
                 </div>
             </div>
         )

@@ -24,6 +24,6 @@ describe('NoExoneration', () => {
     it('should render the page', () => {
         render(<NoExoneration />, scratch);
 
-        expect(scratch.innerHTML).to.contain('Vous ne bénéficiez pas de l\'exonération en 2018');
+        expect(scratch.innerHTML).to.contain('Vous ne bénéficiez pas de l\'exonération<br>en 2018');
     });
 });

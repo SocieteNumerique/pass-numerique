@@ -80,8 +80,9 @@ export default class Home extends Component {
 
                 <div className="home__field">
                     <select onChange={this.handleStatusChange}>
-                        <option value={Calculator.STATUS_SINGLE} selected>Je suis célibataire</option>
-                        <option value={Calculator.STATUS_MARRIED}>Je suis marié(e)</option>
+                        <option selected disabled>Ma situation familiale</option>
+                        <option value={Calculator.STATUS_SINGLE}>Je suis célibataire</option>
+                        <option value={Calculator.STATUS_MARRIED}>Je suis marié(e) ou pacsé(e)</option>
                         <option value={Calculator.STATUS_CONCUBINAGE}>Je suis en concubinage</option>
                         <option value={Calculator.STATUS_WIDOW}>Je suis en veuf/veuve</option>
                     </select>
@@ -89,7 +90,8 @@ export default class Home extends Component {
 
                 <div className="home__field">
                     <select onChange={this.handleDependentsChange}>
-                        <option value="0" selected>Sans enfant</option>
+                        <option selected disabled>Nombre d'enfants</option>
+                        <option value="0">Sans enfant</option>
                         <option value="1">1 enfant</option>
                         <option value="2">2 enfants</option>
                         <option value="3">3 enfants</option>
@@ -117,6 +119,12 @@ export default class Home extends Component {
                     <button type="button" className="page__button" onClick={this.handleButtonClick}>
                         C'est parti !
                     </button>
+                </div>
+
+                <div className="legalities">
+                    Le calcul effectué est purement anonyme et n’a qu’une valeur indicative.
+                    Il dépend uniquement des éléments en notre possession et ne préjuge en rien
+                    du montant qui sera finalement retenu par l’administration fiscale.
                 </div>
             </div>
         )

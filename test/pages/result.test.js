@@ -24,6 +24,6 @@ describe('Result', () => {
     it('should render the page', () => {
         render(<Result />, scratch);
 
-        expect(scratch.innerHTML).to.contain('Ma taxe d’habitation sera de');
+        expect(scratch.innerHTML).to.contain('Ma taxe d’habitation<br>sera de');
     });
 });
