@@ -89,7 +89,7 @@ export default class Home extends Component {
 
                 <div className="home__field">
                     <select onChange={this.handleDependentsChange}>
-                        <option value="0">Sans enfant</option>
+                        <option value="0" selected>Sans enfant</option>
                         <option value="1">1 enfant</option>
                         <option value="2">2 enfants</option>
                         <option value="3">3 enfants</option>
