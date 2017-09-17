@@ -19,7 +19,7 @@ export default class NoExoneration extends Component {
                 </h2>
 
                 <div>
-                    <a href="/" className="page__button page__button--small">Recommencer</a>
+                    <a href="/" className="page__button page__button--small startover startover--no-reduction">Recommencer</a>
                 </div>
             </div>
         )
