@@ -1,4 +1,4 @@
-# Simulateur d'exonération de taxe d'habitation
+# Simulateur d'exonération de taxe d'habitation ([english README](README.en-US.md))
 
 Ce repository est l'application [Preact](https://github.com/developit/preact) qui propulse le simulateur d'exonération
 de taxe d'habitation d'En Marche.
@@ -13,3 +13,6 @@ Questions ? Besoin d'aide ? Rejoignez-nous dans notre [Slack](https://publicslac
 ## Pour commencer
 * `npm install`
 * `npm run dev`
+
+## Remerciements
+Nous utilisons la librairie de Twitter [twemoji](https://github.com/twitter/twemoji) pour nos emojis.
