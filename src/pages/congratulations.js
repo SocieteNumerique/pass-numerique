@@ -34,7 +34,7 @@ export default class Congratulations extends Component {
     handleButtonClick() {
         if (!this.state.tax) {
             this.setState({
-                error: 'Votre taxe d\'habitation est requise.',
+                error: 'Votre taxe d\'habitation est requise',
             });
 
             return;
