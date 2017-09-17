@@ -5,7 +5,7 @@ export default class Result extends Component {
         return (
             <div className="result">
                 <h1 className="result__title">
-                    Ma taxe d’habitation sera de ...
+                    Ma taxe d’habitation<br/>sera de ...
                 </h1>
 
                 <div className="result__years">
