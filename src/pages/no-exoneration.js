@@ -15,7 +15,7 @@ export default class NoExoneration extends Component {
                 </h1>
 
                 <h2 className="noexo__subtitle">
-                    Mais vous contribuez à l'investissement dans votre commune, félicitations !
+                    Mais vous contribuez à l'investissement dans votre commune, merci !
                 </h2>
 
                 <div>

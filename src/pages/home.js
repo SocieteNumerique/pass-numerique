@@ -83,26 +83,26 @@ export default class Home extends Component {
                         <option selected disabled>Ma situation familiale</option>
                         <option value={Calculator.STATUS_SINGLE}>Je suis célibataire</option>
                         <option value={Calculator.STATUS_MARRIED}>Je suis marié(e) ou pacsé(e)</option>
-                        <option value={Calculator.STATUS_CONCUBINAGE}>Je suis en concubinage</option>
+                        <option value={Calculator.STATUS_CONCUBINAGE}>Je suis en concubinage/colocation</option>
                         <option value={Calculator.STATUS_WIDOW}>Je suis en veuf/veuve</option>
                     </select>
                 </div>
 
                 <div className="home__field">
                     <select onChange={this.handleDependentsChange}>
-                        <option selected disabled>Nombre d'enfants</option>
-                        <option value="0">Sans enfant</option>
-                        <option value="1">1 enfant</option>
-                        <option value="2">2 enfants</option>
-                        <option value="3">3 enfants</option>
-                        <option value="4">4 enfants</option>
-                        <option value="5">5 enfants</option>
-                        <option value="6">6 enfants</option>
-                        <option value="7">7 enfants</option>
-                        <option value="8">8 enfants</option>
-                        <option value="9">9 enfants</option>
-                        <option value="10">10 enfants</option>
-                        <option value="0+">0 mais ayant élevé un enfant</option>
+                        <option selected disabled>Nombre se personnes à charge</option>
+                        <option value="0">Aucune personne à charge</option>
+                        <option value="1">1 personne à charge</option>
+                        <option value="2">2 personnes à charge</option>
+                        <option value="3">3 personnes à charge</option>
+                        <option value="4">4 personnes à charge</option>
+                        <option value="5">5 personnes à charge</option>
+                        <option value="6">6 personnes à charge</option>
+                        <option value="7">7 personnes à charge</option>
+                        <option value="8">8 personnes à charge</option>
+                        <option value="9">9 personnes à charge</option>
+                        <option value="10">10 personnes à charge</option>
+                        <option value="0+">Ayant eu des personnes à charge</option>
                     </select>
                 </div>
 
