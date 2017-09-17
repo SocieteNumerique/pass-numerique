@@ -249,6 +249,17 @@ select {
 }
 
 /*
+ * Form error
+ */
+.form-error {
+    color: #fff;
+    background: rgba(255, 0, 0, 0.3);
+    border-radius: 3px;
+    margin-bottom: 13px;
+    padding: 5px;
+}
+
+/*
  * Home
  */
 .home {

@@ -10,19 +10,19 @@ export default class Result extends Component {
 
                 <div className="result__years">
                     <div className="result__year">
-                        700 € en 2018
+                        {this.props.tax2018} € en 2018
                     </div>
 
                     <br />
 
                     <div className="result__year">
-                        350 € en 2019
+                        {this.props.tax2019} € en 2019
                     </div>
 
                     <br />
 
                     <div className="result__year result__year--highlight">
-                        0 € en 2020
+                        {this.props.tax2020} € en 2020
                     </div>
                 </div>
             </div>
