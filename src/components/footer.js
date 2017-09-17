@@ -29,12 +29,14 @@ export default class Footer extends Component {
                     <div className="footer__credits">
                         <span>Libre sur</span>
                         <a href="https://github.com/EnMarche/simuletataxe.fr"
-                           target="_blank">
+                           target="_blank"
+                           className="footer__button--github">
                             <IconGithub />
                         </a>
                         <span>et préparé par</span>
                         <a href="https://en-marche.fr"
-                           target="_blank">
+                           target="_blank"
+                           className="footer__button--em">
                             <IconEnMarche />
                         </a>
                     </div>
