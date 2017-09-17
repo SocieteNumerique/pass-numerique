@@ -4,10 +4,8 @@
 $height-app: 650px;
 
 html, body, #app {
-    height: 100%;
-
-    @media (max-height: $height-app) {
-        height: auto;
+    @media (min-height: $height-app) {
+        height: 100%;
     }
 }
 
@@ -59,6 +57,14 @@ select {
     display: inline-block;
     white-space: nowrap;
     word-wrap: normal;
+
+    &--facebook {
+        width: 9px;
+    }
+
+    &--twitter {
+        width: 15px;
+    }
 
     &--em {
         width: 40px;
@@ -203,8 +209,12 @@ select {
         }
     }
 
+    &__buttons {
+        display: flex;
+        justify-content: center;
+    }
+
     &__button {
-        display: inline-block;
         border: 1px solid rgba(255, 255, 255, 0.5);
         box-sizing: border-box;
         font-size: 12px;
@@ -214,18 +224,15 @@ select {
         border-radius: 3px;
         color: #fff;
         cursor: pointer;
-        vertical-align: top;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30px;
+        min-width: 30px;
+        transition: 0.2s;
 
-        &--facebook {
-            padding: 7px 4px 4px 11px;
-        }
-
-        &--twitter {
-            padding: 7px 6px 4px 9px;
-        }
-
-        &--iframe {
-            padding: 8px;
+        &:hover {
+            background-color: rgba(255, 255, 255, .2);
         }
     }
 
