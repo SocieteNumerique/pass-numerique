@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@symfony/webpack-encore": "^0.15.0",
+    "autoprefixer": "^7.1.4",
     "babel-jest": "^21.0.2",
     "babel-preset-env": "^1.6.0",
     "babel-preset-preact": "^1.1.0",
@@ -38,9 +39,14 @@
     "jest": "^21.1.0",
     "node-sass": "^4.5.3",
     "normalize.css": "^7.0.0",
+    "postcss-loader": "^2.0.6",
     "preact": "^8.2.5",
     "preact-jsx-chai": "^2.2.1",
     "preact-router": "^2.5.7",
     "sass-loader": "^6.0.6"
-  }
+  },
+  "browserslist": [
+      "last 2 versions",
+      "ios >= 8"
+  ]
 }

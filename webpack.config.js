@@ -39,6 +39,11 @@ Encore
 			windows: false
 		}
 	}))
+    .enablePostCssLoader((options) => {
+        options.config = {
+            path: 'postcss.config.js'
+        };
+    })
 ;
 
 module.exports = Encore.getWebpackConfig();
