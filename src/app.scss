@@ -1,4 +1,17 @@
 @import "fonts/fonts";
+$height-app: 650px;
+$button-blue: #0f4dcf;
+
+@mixin movement {
+    transition: .2s;
+
+    &:hover,
+    &:active,
+    &:focus {
+        transform: translate(0, -1px);
+        box-shadow: 0 2px 4px 0 rgba($button-blue,.2);
+    }
+}
 
 $height-app: 650px;
 
@@ -31,6 +44,14 @@ input, select {
     width: 100%;
     margin-bottom: 13px;
     border-radius: 3px;
+    @include movement;
+}
+
+select {
+    background-image: url('images/arrows.svg');
+    background-repeat: no-repeat;
+    background-position: right 17px center;
+    cursor: pointer;
 }
 
 .container {
@@ -77,6 +98,7 @@ input, select {
 
 .modal {
     background: #32a5ca;
+    height: 570px;
 
     &__close {
         position: absolute;
@@ -144,13 +166,13 @@ input, select {
         box-sizing: border-box;
         font-size: 16px;
         font-family: $font-roboto;
-        background: #0f4dcf;
+        background: $button-blue;
         width: 100%;
         margin-bottom: 13px;
         border-radius: 3px;
         color: #fff;
         cursor: pointer;
-        transition: .1s;
+        @include movement;
 
         &:hover {
             background-color: #0c48c5;
