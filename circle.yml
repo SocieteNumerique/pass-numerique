@@ -4,6 +4,8 @@ machine:
     environment:
         YARN_VERSION: 1.0.2
         PATH: "${PATH}:${HOME}/.yarn/bin:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+    services:
+        - docker
 
 dependencies:
     cache_directories:
@@ -21,3 +23,26 @@ test:
     override:
         - yarn test
         - yarn run prod
+
+deployment:
+    staging:
+        branch: master
+        owner: EnMarche
+        commands:
+            # Google Cloud authentication
+            - echo $GCLOUD_SERVICE_KEY | base64 --decode > ${HOME}/gcloud-service-key.json && cp ${HOME}/gcloud-service-key.json gcloud-service-key.json
+            - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update
+            - sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
+            - sudo /opt/google-cloud-sdk/bin/gcloud config set project $GCLOUD_PROJECT
+
+            # Build the image
+            - yarn run prod
+            - docker build -t eu.gcr.io/$GCLOUD_PROJECT/simuletataxe:$CIRCLE_SHA1 .
+
+            # Push the images to Google Cloud
+            - sudo /opt/google-cloud-sdk/bin/gcloud docker -- push eu.gcr.io/$GCLOUD_PROJECT/simuletataxe:$CIRCLE_SHA1
+
+            # Deploy
+            - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update kubectl
+            - sudo /opt/google-cloud-sdk/bin/gcloud container clusters get-credentials $GCLOUD_CLUSTER --project $GCLOUD_PROJECT --zone europe-west1-d
+            - sudo GOOGLE_APPLICATION_CREDENTIALS=${HOME}/gcloud-service-key.json /opt/google-cloud-sdk/bin/kubectl set image deployment/prod-simuletataxe simuletataxe=eu.gcr.io/$GCLOUD_PROJECT/simuletataxe:$CIRCLE_SHA1
