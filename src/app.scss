@@ -14,11 +14,14 @@ body {
 }
 
 input, select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     padding: 0 17px;
     border: 0;
     height: 55px;
     box-sizing: border-box;
-    font-size: 14px;
+    font-size: 16px;
     font-family: $font-roboto;
     background: #fff;
     width: 100%;
@@ -142,6 +145,12 @@ input, select {
         margin-bottom: 13px;
         border-radius: 3px;
         color: #fff;
+        cursor: pointer;
+        transition: .1s;
+
+        &:hover {
+            background-color: #0c48c5;
+        }
     }
 }
 
@@ -152,6 +161,7 @@ input, select {
 .legalities {
     margin-top: 10px;
     font-size: 12px;
+    line-height: 18px;
 }
 
 /*
