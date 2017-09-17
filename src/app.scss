@@ -1,7 +1,13 @@
 @import "fonts/fonts";
 
+$height-app: 650px;
+
 html, body, #app {
     height: 100%;
+
+    @media (max-height: $height-app) {
+        height: auto;
+    }
 }
 
 body {
