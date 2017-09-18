@@ -78,6 +78,7 @@ select {
 }
 
 .modal, .page {
+    min-height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -86,8 +87,7 @@ select {
 }
 
 .modal {
-    background: #32a5ca;
-    height: 570px;
+    background: $bg-teal;
 
     &__close {
         position: absolute;
@@ -345,8 +345,35 @@ select {
         padding: 2px 13px;
 
         &--highlight {
-            background-color: #edf861;
-            color: #5d5d5d;
+            color: white;
+            background-image: linear-gradient(to right, transparent 50%, #edf861 50%);
+            background-origin: 0;
+            background-size: 200% 50%;
+            transition: all 0.5s;
+            animation: highlighter 0.2s steps(100) forwards;
+        }
+
+        @keyframes highlighter {
+            0% {
+                background-position: 0 100%;
+                color: white;
+                transform: scale(1);
+            }
+            95% {
+                background-position: -100% 100%;
+                color: #5d5d5d;
+                transform: scale(.9);
+            }
+            97% {
+                background-position: -100% 100%;
+                color: #5d5d5d;
+                transform: scale(1.1);
+            }
+            100% {
+                background-position: -100% 100%;
+                color: #5d5d5d;
+                transform: scale(1);
+            }
         }
     }
 }
