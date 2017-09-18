@@ -78,6 +78,7 @@ select {
 }
 
 .modal, .page {
+    min-height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -86,8 +87,7 @@ select {
 }
 
 .modal {
-    background: #32a5ca;
-    height: 570px;
+    background: $bg-teal;
 
     &__close {
         position: absolute;
