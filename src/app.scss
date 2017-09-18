@@ -1,14 +1,6 @@
 @import "fonts/fonts";
 @import "styles/vars-and-mixins";
 
-$height-app: 650px;
-
-html, body, #app {
-    @media (min-height: $height-app) {
-        height: 100%;
-    }
-}
-
 body {
     margin: 0 auto;
     background: linear-gradient(206deg, #306ffb, #36d1dc) no-repeat fixed #306ffb;
@@ -42,10 +34,13 @@ select {
 }
 
 .container {
-    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
+
+    @media (min-height: $height-app) {
+        height: 100vh;
+    }
 }
 
 .icon {
@@ -83,11 +78,10 @@ select {
 }
 
 .modal, .page {
-    align-self: flex-start;
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    flex: 1;
     width: 100%;
 }
 
@@ -195,7 +189,6 @@ select {
  * Footer
  */
 .footer {
-    align-self: flex-end;
     background: rgba(255, 255, 255, 0.2);
     text-align: center;
     width: 100%;
