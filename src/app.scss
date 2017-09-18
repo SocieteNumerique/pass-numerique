@@ -350,7 +350,8 @@ select {
             background-origin: 0;
             background-size: 200% 50%;
             transition: all 0.5s;
-            animation: highlighter 0.2s steps(100) forwards;
+            mix-blend-mode: multiply;
+            animation: highlighter 0.5s steps(100) forwards;
         }
 
         @keyframes highlighter {
@@ -359,12 +360,15 @@ select {
                 color: white;
                 transform: scale(1);
             }
-            95% {
+            60% {
+                color: #fff;
+            }
+            90% {
                 background-position: -100% 100%;
                 color: #5d5d5d;
                 transform: scale(.9);
             }
-            97% {
+            95% {
                 background-position: -100% 100%;
                 color: #5d5d5d;
                 transform: scale(1.1);
