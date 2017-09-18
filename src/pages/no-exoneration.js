@@ -19,7 +19,11 @@ export default class NoExoneration extends Component {
                 </h2>
 
                 <div>
-                    <a href="/" className="page__button page__button--small startover--no-reduction">Recommencer</a>
+                    <button type="button"
+                            onClick={() => window.location.href = '/'}
+                            className="page__button page__button--small startover--no-reduction">
+                        Recommencer
+                    </button>
                 </div>
             </div>
         )
