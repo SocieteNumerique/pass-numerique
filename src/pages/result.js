@@ -27,7 +27,11 @@ export default class Result extends Component {
                 </div>
 
                 <div>
-                    <a href="/" className="page__button page__button--small startover startover--reduction">Recommencer</a>
+                    <button type="button"
+                            onClick={() => window.location.href = '/'}
+                            className="page__button page__button--small startover startover--reduction">
+                        Recommencer
+                    </button>
                 </div>
             </div>
         )
