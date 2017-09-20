@@ -73,7 +73,7 @@ export default class Home extends Component {
         let calculator = new Calculator();
 
         if (calculator.isExempted(this.state.status, this.state.dependents, this.state.income)) {
-            route('/congratulations/'+this.state.status+'/'+this.state.dependents+'/'+this.state.income);
+            route('/exoneration/'+this.state.status+'/'+this.state.dependents+'/'+this.state.income);
 
             return;
         }

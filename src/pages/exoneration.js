@@ -5,7 +5,7 @@ import Calculator from '../services/calculator';
 
 import IconSunglasses from '../components/icon-sunglasses';
 
-export default class Congratulations extends Component {
+export default class Exoneration extends Component {
     constructor(props) {
         super(props);
 
@@ -54,28 +54,24 @@ export default class Congratulations extends Component {
 
     render() {
         return (
-            <div className="congrats">
-                <div className="congrats__icon">
+            <div className="exoneration">
+                <div className="exoneration__icon">
                     <IconSunglasses />
                 </div>
 
-                <h1 className="congrats__title">
-                    Félicitations !
-                </h1>
-
-                <h2 className="congrats__subtitle">
+                <h1 className="exoneration__title">
                     Vous bénéficierez d'une baisse de votre taxe d’habitation dès l'année prochaine.
-                </h2>
+                </h1>
 
                 {this.state.error ? <div className="form-error">{this.state.error}</div> : ''}
 
-                <div className="congrats__label">
+                <div className="exoneration__label">
                     <label for="previous-tax">
                         Quel était le montant de votre taxe d’habitation en 2017 ?
                     </label>
                 </div>
 
-                <div className="congrats__field">
+                <div className="exoneration__field">
                     <input type="number"
                            id="previous-tax"
                            name="previous-tax"
@@ -86,7 +82,7 @@ export default class Congratulations extends Component {
                     />
                 </div>
 
-                <div className="congrats__submit">
+                <div className="exoneration__submit">
                     <button type="button" className="page__button" onClick={this.handleButtonClick}>
                         Calculer ma taxe d’habitation pour les 3 prochaines années
                     </button>
