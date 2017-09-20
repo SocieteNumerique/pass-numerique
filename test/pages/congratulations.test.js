@@ -1,9 +1,9 @@
 import { h, render } from 'preact';
 import { expect } from 'chai';
 
-import Congratulations from '../../src/pages/congratulations';
+import Exoneration from '../../src/pages/exoneration';
 
-describe('Congratulations', () => {
+describe('Exoneration', () => {
     let scratch;
 
     beforeAll(() => {
@@ -22,8 +22,8 @@ describe('Congratulations', () => {
 
 
     it('should render the page', () => {
-        render(<Congratulations />, scratch);
+        render(<Exoneration />, scratch);
 
-        expect(scratch.innerHTML).to.contain('Félicitations !');
+        expect(scratch.innerHTML).to.contain('Vous bénéficierez d\'une baisse de votre taxe d’habitation dès l\'année prochaine.');
     });
 });
