@@ -64,7 +64,7 @@ export default class Home extends Component {
 
         if (!this.state.income) {
             this.setState({
-                error: 'Votre revenu mensuel est requis',
+                error: 'Votre revenu fiscal de référence est requis',
             });
 
             return;
@@ -124,7 +124,7 @@ export default class Home extends Component {
 
                 <div className="home__field">
                     <input type="number"
-                           placeholder="Revenu mensuel net de mon foyer (en €)"
+                           placeholder="Revenu fiscal de référence (en €)"
                            value={this.state.income}
                            onKeyUp={this.handleIncomeEnterPressed}
                            onInput={this.handleIncomeChange}
