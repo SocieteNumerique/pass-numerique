@@ -25,8 +25,8 @@ Encore
     .addPlugin(new HtmlWebpackHarddiskPlugin())
     .addPlugin(new CopyWebpackPlugin([
         {
-            from: 'src/images/th-social-media.png',
-            to: 'images/th-social-media.png',
+            from: 'src/images/th-social.png',
+            to: 'images/th-social.png',
         },
     ]))
     .addPlugin(new FaviconsWebpackPlugin({
