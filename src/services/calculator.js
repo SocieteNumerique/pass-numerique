@@ -2,16 +2,14 @@ import partsCounts from './parts-counts';
 import thresholds from './thresholds';
 
 export default class Calculator {
-    isExempted(status, dependentsCount, monthlyIncome) {
-        let yearlyReference = this._monthlyToYearlyReference(monthlyIncome),
-            thresholds = this._getThresholds(status, dependentsCount);
+    isExempted(status, dependentsCount, yearlyReference) {
+        let thresholds = this._getThresholds(status, dependentsCount);
 
         return yearlyReference <= thresholds.high;
     }
 
-    computeNextYears(status, dependentsCount, monthlyIncome, previousTax) {
-        let yearlyReference = this._monthlyToYearlyReference(monthlyIncome),
-            thresholds = this._getThresholds(status, dependentsCount);
+    computeNextYears(status, dependentsCount, yearlyReference, previousTax) {
+        let thresholds = this._getThresholds(status, dependentsCount);
 
         if (yearlyReference <= thresholds.low) {
             return {
@@ -52,10 +50,6 @@ export default class Calculator {
         }
 
         return Calculator.THRESHOLDS[Calculator.PARTS_COUNTS[status][dependentsCount]];
-    }
-
-    _monthlyToYearlyReference(monthlyIncome) {
-        return Math.ceil(monthlyIncome * 10.806);
     }
 };
 
