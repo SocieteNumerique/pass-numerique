@@ -1,7 +1,8 @@
 import { h, Component } from 'preact';
 import { Router } from 'preact-router';
 
-import IframeModal from './components/iframe-modal';
+import ModalIframe from './components/modal-iframe';
+import ModalExplainations from './components/modal-explainations';
 import Footer from './components/footer';
 
 import Home from './pages/home';
@@ -14,20 +15,34 @@ export default class App extends Component {
         super(props);
 
         this.state = {
-            modal: false
+            modalIframe: false,
+            modalExplainations: false,
         };
     }
 
     render() {
         return (
             <div className="container">
-                {this.state.modal ? <IframeModal onClose={() => { this.setState({ modal: false }); }} /> : ''}
+                {!this.state.modalIframe ? '' : (
+                    <ModalIframe onClose={() => {
+                        this.setState({ modalIframe: false });
+                    }} />
+                )}
 
-                {this.state.modal ? '' : (
+                {!this.state.modalExplainations ? '' : (
+                    <ModalExplainations onClose={() => {
+                        this.setState({ modalExplainations: false });
+                    }} />
+                )}
+
+                {(this.state.modalIframe || this.state.modalExplainations) ? '' : (
                     <div className="page">
                         <div className="content">
                             <Router>
-                                <Home path="/" />
+                                <Home path="/" onExplainationsClick={() => {
+                                    this.setState({ modalExplainations: !this.state.modalExplainations });
+                                }} />
+
                                 <Exoneration path="/exoneration/:status/:dependents/:income" />
                                 <NoExoneration path="/no-exoneration" />
                                 <Result path="/result/:tax2018/:tax2019/:tax2020" />
@@ -36,7 +51,9 @@ export default class App extends Component {
                     </div>
                 )}
 
-                <Footer onModalClick={() => { this.setState({ modal: !this.state.modal }); }} />
+                <Footer onModalClick={() => {
+                    this.setState({ modalIframe: !this.state.modalIframe });
+                }} />
             </div>
         )
     }

@@ -120,7 +120,7 @@ select {
         padding: 0 40px;
     }
 
-    &__subtitle {
+    &__subtitle, &__text {
         font-family: $font-roboto;
         @include text--default;
         margin: 0 0 25px 0;

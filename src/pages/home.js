@@ -129,6 +129,8 @@ export default class Home extends Component {
                            onKeyUp={this.handleIncomeEnterPressed}
                            onInput={this.handleIncomeChange}
                     />
+
+                    <button type="button" onClick={this.props.onExplainationsClick}>Explications</button>
                 </div>
 
                 <div className="home__submit">
