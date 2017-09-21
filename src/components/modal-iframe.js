@@ -1,6 +1,6 @@
 import { h, Component } from 'preact';
 
-export default class IframeModal extends Component {
+export default class ModalIframe extends Component {
     render() {
         return (
             <div className="modal">

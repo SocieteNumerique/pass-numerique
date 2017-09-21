@@ -124,12 +124,16 @@ export default class Home extends Component {
 
                 <div className="home__field">
                     <input type="number"
-                           placeholder="Revenu fiscal de référence (en €)"
+                           placeholder="Revenu fiscal de référence (annuel)"
                            value={this.state.income}
                            onKeyUp={this.handleIncomeEnterPressed}
                            onInput={this.handleIncomeChange}
                     />
                 </div>
+
+                <button type="button" className="home__explainer" onClick={this.props.onExplainationsClick}>
+                    Où le trouver ?
+                </button>
 
                 <div className="home__submit">
                     <button type="button" className="page__button" onClick={this.handleButtonClick}>
