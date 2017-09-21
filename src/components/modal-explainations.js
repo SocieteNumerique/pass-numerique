@@ -13,16 +13,17 @@ export default class ModalExplainations extends Component {
                     </div>
 
                     <h1 className="modal__title">
-                        TODO
+                        Comment et où trouver mon revenu fiscal de référence ?
                     </h1>
 
-                    <div className="modal__subtitle">
-                        TODO
+                    <div className="modal__text">
+                        Il est situé sur votre avis d'imposition, en haut à gauche de la premiere page. Dans un cadre intitulé "Vos références".
                     </div>
 
-                    <div className="modal__text">
-                        TODO
+                    <div className="modal__text--small">
+                        Ce montant est calculé pour votre foyer selon les revenus que vous déclarez, ainsi qu'en fonction des charges déductibles et abattements retenus dans le calcul de votre impôt sur le revenu.
                     </div>
+
                 </div>
             </div>
         )

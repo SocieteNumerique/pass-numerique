@@ -125,6 +125,10 @@ select {
         @include text--default;
         margin: 0 0 25px 0;
         padding: 0 40px;
+
+        &--small {
+            @include text--small;
+        }
     }
 
     &__field {
@@ -271,6 +275,23 @@ select {
     &__field input[type="number"] {
         @media (max-width: $width-iphone5) {
             font-size: 14px;
+        }
+    }
+
+    &__explainer {
+        display: block;
+        background: transparent;
+        border: 0;
+        color: white;
+        text-align: right;
+        width: 100%;
+        margin: -10px 0 8px;
+        font-size: 12px;
+        transition: .2s all;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.8;
         }
     }
 }
