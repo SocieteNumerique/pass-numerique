@@ -289,6 +289,10 @@ select {
         transition: .2s all;
         cursor: pointer;
 
+        @media (max-width: $width-phone) {
+            margin-bottom: 15px; 
+        }
+
         &:hover {
             opacity: 0.8;
         }
