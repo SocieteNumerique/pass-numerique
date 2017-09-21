@@ -381,7 +381,6 @@ select {
             background-origin: 0;
             background-size: 200% 50%;
             transition: all 0.5s;
-            mix-blend-mode: multiply;
             animation: highlighter 0.5s steps(100) forwards;
         }
     }
