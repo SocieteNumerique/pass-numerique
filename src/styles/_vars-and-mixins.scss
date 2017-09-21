@@ -41,3 +41,50 @@ $bg-teal: #32a5ca;
     margin-left: auto;
     margin-right: auto;
 }
+
+@keyframes highlighter {
+    0% {
+        background-position: 0 100%;
+        color: white;
+        transform: scale(1);
+    }
+    60% {
+        color: #fff;
+    }
+    90% {
+        background-position: -100% 100%;
+        color: #5d5d5d;
+        transform: scale(.9);
+    }
+    95% {
+        background-position: -100% 100%;
+        color: #5d5d5d;
+        transform: scale(1.1);
+    }
+    100% {
+        background-position: -100% 100%;
+        color: #5d5d5d;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideup {
+    0% {
+        transform: translateY(100%);
+    }
+    98% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes showcontent {
+    0% {
+        opacity: 0;
+    }
+    98% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
