@@ -27,12 +27,12 @@ export default class Exoneration extends Component {
 
     handleTaxChange(event) {
         this.setState({
-            tax: parseInt(event.target.value) || null,
+            tax: isNaN(parseInt(event.target.value)) ? null : parseInt(event.target.value),
         });
     }
 
     handleButtonClick() {
-        if (!this.state.tax) {
+        if (isNaN(parseInt(this.state.tax))) {
             this.setState({
                 error: 'Votre taxe d\'habitation est requise',
             });
