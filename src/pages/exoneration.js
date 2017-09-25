@@ -19,6 +19,20 @@ export default class Exoneration extends Component {
         this.handleButtonClick = this.handleButtonClick.bind(this);
     }
 
+    componentWillMount() {
+        if (-1 === [1, 2, 3, 4].indexOf(parseInt(this.props.status))) {
+            route('/not-found', true);
+        }
+
+        if (isNaN(parseInt(this.props.dependents))) {
+            route('/not-found', true);
+        }
+
+        if (isNaN(parseInt(this.props.income))) {
+            route('/not-found', true);
+        }
+    }
+
     handleTaxEnterPressed(event) {
         if (event.keyCode === 13) {
             this.handleButtonClick();
@@ -43,9 +57,9 @@ export default class Exoneration extends Component {
         let calculator = new Calculator();
 
         let nextYears = calculator.computeNextYears(
-            this.props.status,
-            this.props.dependents,
-            this.props.income,
+            parseInt(this.props.status),
+            parseInt(this.props.dependents),
+            parseInt(this.props.income),
             this.state.tax
         );
 

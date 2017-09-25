@@ -1,6 +1,17 @@
 import { h, Component } from 'preact';
+import { route } from 'preact-router';
 
 export default class Result extends Component {
+    componentWillMount() {
+        let taxes = [this.props.tax2018, this.props.tax2019, this.props.tax2020];
+
+        for (let i in taxes) {
+            if (isNaN(parseInt(taxes[i]))) {
+                route('/not-found', true);
+            }
+        }
+    }
+
     render() {
         return (
             <div className="result">
