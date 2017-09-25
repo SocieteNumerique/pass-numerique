@@ -41,7 +41,7 @@ export default class Home extends Component {
 
     handleIncomeChange(event) {
         this.setState({
-            income: parseInt(event.target.value) || null,
+            income: isNaN(parseInt(event.target.value)) ? null : parseInt(event.target.value),
         });
     }
 
@@ -62,7 +62,7 @@ export default class Home extends Component {
             return;
         }
 
-        if (!this.state.income) {
+        if (isNaN(parseInt(this.state.income))) {
             this.setState({
                 error: 'Votre revenu fiscal de référence est requis',
             });
