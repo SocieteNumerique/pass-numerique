@@ -85,11 +85,12 @@ export default class Home extends Component {
         return (
             <div className="home">
                 <h1 className="home__title">
-                    Vais-je bénéficier des exonérations de la taxe d’habitation ?
+                    Simulation Pass Numérique
                 </h1>
 
                 <div className="home__subtitle">
-                    Si oui, de combien ?
+                    Permettre à chacun d'acquérir des
+                    compétences numériques de base.
                 </div>
 
                 {this.state.error ? <div className="form-error">{this.state.error}</div> : ''}

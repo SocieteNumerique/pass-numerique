@@ -1,22 +1,22 @@
-@import "fonts/fonts";
-@import "styles/vars-and-mixins";
+@import url('https://fonts.googleapis.com/css?family=ABeeZee|Nunito:400,700');
+@import './variables';
 
 body {
     margin: 0 auto;
-    background: linear-gradient(206deg, #306ffb, #36d1dc) no-repeat fixed #306ffb;
-    font-family: $font-roboto;
+    background: #f7f8fc;
+    font-family: $font-body;
     @include text--default;
-    color: #fff;
+    color: $color-body;
     text-align: center;
 }
 
 input, select {
     appearance: none;
     padding: 0 17px;
-    border: 0;
+    border: 1px solid #e0e0e0;
     height: 55px;
     box-sizing: border-box;
-    font-family: $font-roboto;
+    font-family: $font-body;
     background: #fff;
     color: #444;
     width: 100%;
@@ -110,7 +110,7 @@ select {
             text-decoration: none;
 
             &, &:visited, &:focus, &:hover {
-                color: #fff;
+                color: #222;
             }
 
             &:hover {
@@ -120,14 +120,14 @@ select {
     }
 
     &__title {
-        font-family: $font-gillsans;
+        font-family: $font-title;
         font-size: 24px;
         margin: 0 0 10px 0;
         padding: 0 40px;
     }
 
     &__subtitle, &__text {
-        font-family: $font-roboto;
+        font-family: $font-body;
         @include text--default;
         margin: 0 0 25px 0;
         padding: 0 40px;
@@ -164,7 +164,7 @@ select {
         border: 0;
         box-sizing: border-box;
         @include text--default;
-        font-family: $font-roboto;
+        font-family: $font-body;
         background: $button-blue;
         width: 100%;
         margin-bottom: 13px;
@@ -208,7 +208,7 @@ select {
         padding: 10px;
 
         .icon {
-            fill: #fff;
+            fill: #222;
         }
     }
 
@@ -221,11 +221,11 @@ select {
         border: 1px solid rgba(255, 255, 255, 0.5);
         box-sizing: border-box;
         font-size: 12px;
-        font-family: $font-roboto;
+        font-family: $font-body;
         background: transparent;
         margin: 0 5px;
         border-radius: 3px;
-        color: #fff;
+        color: #222;
         cursor: pointer;
         display: flex;
         align-items: center;
@@ -257,8 +257,8 @@ select {
  * Form error
  */
 .form-error {
-    color: #fff;
-    background: rgba(255, 0, 0, 0.3);
+    color: #FF0000;
+    background: rgba(255, 0, 0, 0.1);
     border-radius: 3px;
     margin-bottom: 13px;
     padding: 5px;
@@ -334,7 +334,7 @@ select {
     }
 
     &__title {
-        font-family: $font-gillsans;
+        font-family: $font-title;
         font-size: 24px;
         margin: 0 0 10px 0;
         padding: 0;
@@ -383,7 +383,7 @@ select {
     }
 
     &__years {
-        font-family: $font-roboto;
+        font-family: $font-body;
         font-size: 24px;
         font-weight: 500;
         margin: 0 0 40px 0;
