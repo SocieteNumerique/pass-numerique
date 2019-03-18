@@ -6,8 +6,8 @@ export default class Territory extends Component {
         super(props);
 
         this.state = {
-            isTargetPublic: false,
-            hasOrganizedLocally: false,
+            isTargetPublic: this.props.isTargetPublic ? !!parseInt(this.props.isTargetPublic) : false,
+            hasOrganizedLocally: this.props.hasOrganizedLocally ? !!parseInt(this.props.hasOrganizedLocally) : false,
         };
     }
 
@@ -45,6 +45,16 @@ export default class Territory extends Component {
         ].join('/'));
     }
 
+    handleBackClick() {
+        route('/home/'+[
+            this.props.scale,
+            this.props.population,
+            this.props.density,
+            this.props.poverty,
+            this.props.previousBudget,
+        ].join('/'));
+    }
+
     render() {
         return (
             <div className="home">
@@ -58,7 +68,7 @@ export default class Territory extends Component {
 
                 <div className="home__checkbox">
                     <div className="form-checkbox">
-                        <input type="checkbox" id="isTargetPublic"
+                        <input type="checkbox" id="isTargetPublic" checked={this.state.isTargetPublic}
                                onChange={() => this.handleChange('isTargetPublic')} />
                         <label htmlFor="isTargetPublic">
                             <div>
@@ -71,7 +81,7 @@ export default class Territory extends Component {
 
                 <div className="home__checkbox">
                     <div className="form-checkbox">
-                        <input type="checkbox" id="hasOrganizedLocally"
+                        <input type="checkbox" id="hasOrganizedLocally" checked={this.state.hasOrganizedLocally}
                                onChange={() => this.handleChange('hasOrganizedLocally')} />
                         <label htmlFor="hasOrganizedLocally">
                             <div>
@@ -92,8 +102,8 @@ export default class Territory extends Component {
                 </div>
 
                 <button type="button" className="page__button page__button--small page__button--outline"
-                        onClick={() => route('/')}>
-                    Retour à l'accueil
+                        onClick={() => this.handleBackClick()}>
+                    Retour
                 </button>
             </div>
         )

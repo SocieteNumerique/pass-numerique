@@ -6,9 +6,9 @@ export default class Bonus extends Component {
         super(props);
 
         this.state = {
-            hasHub: false,
-            areOthersAssociated: false,
-            hasEuFunds: false,
+            hasHub: this.props.hasHub ? !!parseInt(this.props.hasHub) : false,
+            areOthersAssociated: this.props.areOthersAssociated ? !!parseInt(this.props.areOthersAssociated) : false,
+            hasEuFunds: this.props.hasEuFunds ? !!parseInt(this.props.hasEuFunds) : false,
         };
     }
 
@@ -41,6 +41,18 @@ export default class Bonus extends Component {
             this.state.hasHub ? 1 : 0,
             this.state.areOthersAssociated ? 1 : 0,
             this.state.hasEuFunds ? 1 : 0,
+        ].join('/'));
+    }
+
+    handleBackClick() {
+        route('/territory/'+[
+            this.props.scale,
+            this.props.population,
+            this.props.density,
+            this.props.poverty,
+            this.props.previousBudget,
+            this.props.isTargetPublic,
+            this.props.hasOrganizedLocally,
         ].join('/'));
     }
 
@@ -102,8 +114,8 @@ export default class Bonus extends Component {
                 </div>
 
                 <button type="button" className="page__button page__button--small page__button--outline"
-                        onClick={() => route('/')}>
-                    Retour à l'accueil
+                        onClick={() => this.handleBackClick()}>
+                    Retour
                 </button>
             </div>
         )

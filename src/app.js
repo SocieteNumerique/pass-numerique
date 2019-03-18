@@ -16,8 +16,11 @@ export default class App extends Component {
                     <div className="content">
                         <Router>
                             <Home path="/" />
+                            <Home path="/home/:scale/:population/:density/:poverty/:previousBudget" />
                             <Territory path="/territory/:scale/:population/:density/:poverty/:previousBudget" />
+                            <Territory path="/territory/:scale/:population/:density/:poverty/:previousBudget/:isTargetPublic/:hasOrganizedLocally" />
                             <Bonus path="/bonus/:scale/:population/:density/:poverty/:previousBudget/:isTargetPublic/:hasOrganizedLocally" />
+                            <Bonus path="/bonus/:scale/:population/:density/:poverty/:previousBudget/:isTargetPublic/:hasOrganizedLocally/:hasHub/:areOthersAssociated/:hasEuFunds" />
                             <Result path="/result/:scale/:population/:density/:poverty/:previousBudget/:isTargetPublic/:hasOrganizedLocally/:hasHub/:areOthersAssociated/:hasEuFunds" />
                             <Disqualified path="/disqualified" />
                             <NotFound default />

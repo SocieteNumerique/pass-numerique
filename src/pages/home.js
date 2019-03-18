@@ -8,11 +8,11 @@ export default class Home extends Component {
         super(props);
 
         this.state = {
-            scale: null,
-            population: null,
-            density: null,
-            poverty: null,
-            previousBudget: null,
+            scale: parseInt(this.props.scale),
+            population: parseInt(this.props.population),
+            density: parseInt(this.props.density),
+            poverty: parseInt(this.props.poverty),
+            previousBudget: parseInt(this.props.previousBudget),
             error: null,
         };
     }
@@ -82,11 +82,25 @@ export default class Home extends Component {
 
                 <div className="home__field">
                     <select onChange={(e) => this.handleChange('scale', e.target.value)}>
-                        <option selected disabled>Échelle territoriale du porteur de projet</option>
-                        <option value={Calculator.SCALE_INTERMUNICIPAL}>Intercommunale</option>
-                        <option value={Calculator.SCALE_DEPARTMENTAL}>Départementale</option>
-                        <option value={Calculator.SCALE_INTERDEPARTMENTAL}>Interdépartementale</option>
-                        <option value={Calculator.SCALE_REGIONAL}>Régionale</option>
+                        <option selected={!this.state.scale} disabled>
+                            Échelle territoriale du porteur de projet
+                        </option>
+                        <option selected={this.state.scale === Calculator.SCALE_INTERMUNICIPAL}
+                                value={Calculator.SCALE_INTERMUNICIPAL}>
+                            Intercommunale
+                        </option>
+                        <option selected={this.state.scale === Calculator.SCALE_DEPARTMENTAL}
+                                value={Calculator.SCALE_DEPARTMENTAL}>
+                            Départementale
+                        </option>
+                        <option selected={this.state.scale === Calculator.SCALE_INTERDEPARTMENTAL}
+                                value={Calculator.SCALE_INTERDEPARTMENTAL}>
+                            Interdépartementale
+                        </option>
+                        <option selected={this.state.scale === Calculator.SCALE_REGIONAL}
+                                value={Calculator.SCALE_REGIONAL}>
+                            Régionale
+                        </option>
                     </select>
                 </div>
 

@@ -16,6 +16,21 @@ export default class Result extends Component {
         }
     }
 
+    handleBackClick() {
+        route('/bonus/'+[
+            this.props.scale,
+            this.props.population,
+            this.props.density,
+            this.props.poverty,
+            this.props.previousBudget,
+            this.props.isTargetPublic,
+            this.props.hasOrganizedLocally,
+            this.props.hasHub,
+            this.props.areOthersAssociated,
+            this.props.hasEuFunds,
+        ].join('/'));
+    }
+
     render() {
         const calculator = new Calculator();
 
@@ -54,7 +69,7 @@ export default class Result extends Component {
                         Taux estimé de cofinancement de l'Etat
                     </div>
                     <div className="result__field__value">
-                        {result.stateRate * 100}%
+                        {Math.round(result.stateRate * 100)}%
                     </div>
                 </div>
 
@@ -63,7 +78,7 @@ export default class Result extends Component {
                         Montant estimé du cofinancement de l'Etat
                     </div>
                     <div className="result__field__value">
-                        {result.stateAmount.toLocaleString('fr')} €
+                        {Math.round(result.stateAmount).toLocaleString('fr')} €
                     </div>
                 </div>
 
@@ -101,6 +116,11 @@ export default class Result extends Component {
                             onClick={() => window.location.href = '/'}
                             className="page__button page__button--small startover--reduction">
                         Recommencer
+                    </button>
+
+                    <button type="button" className="page__button page__button--small page__button--outline"
+                            onClick={() => this.handleBackClick()}>
+                        Retour
                     </button>
                 </div>
             </div>
