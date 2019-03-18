@@ -1,6 +1,54 @@
 export class Calculator {
     compute(input) {
         let score = 0;
+
+        // Integrate ratios to the average stats to the score
+        const ratios = {
+            population: (input.population / Calculator.NATIONAL_STATS[input.scale].population) - 1,
+            density: (input.density / Calculator.NATIONAL_STATS[input.scale].density),
+            poverty: input.poverty - Calculator.NATIONAL_STATS[input.scale].poverty,
+        };
+
+        // Population
+        if (ratios.population >= 0.1 && ratios.population < 0.2) {
+            score += 5;
+        } else if (ratios.population >= 0.2 && ratios.population < 0.3) {
+            score += 10;
+        } else if (ratios.population >= 0.3 && ratios.population < 0.4) {
+            score += 15;
+        } else if (ratios.population >= 0.4 && ratios.population < 0.5) {
+            score += 20;
+        } else if (ratios.population >= 0.5) {
+            score += 25;
+        }
+
+        // Density
+        if (ratios.density <= 0.5 && ratios.density > 0.4) {
+            score += 5;
+        } else if (ratios.density <= 0.4 && ratios.density > 0.3) {
+            score += 10;
+        } else if (ratios.density <= 0.3 && ratios.density > 0.2) {
+            score += 15;
+        } else if (ratios.density <= 0.2 && ratios.density > 0.1) {
+            score += 20;
+        } else if (ratios.density <= 0.1 && ratios.density > 0) {
+            score += 25;
+        }
+
+        // Poverty
+        if (ratios.poverty > 0.01 && ratios.poverty < 0.02) {
+            score += 5;
+        } else if (ratios.poverty > 0.02 && ratios.poverty < 0.03) {
+            score += 10;
+        } else if (ratios.poverty > 0.03 && ratios.poverty < 0.04) {
+            score += 15;
+        } else if (ratios.poverty > 0.04 && ratios.poverty < 0.05) {
+            score += 20;
+        } else if (ratios.poverty > 0.05) {
+            score += 25;
+        }
+
+        // Integrate boolean properties in the score
         for (let prop in Calculator.COEFFICIENTS) {
             if (typeof input[prop] !== 'undefined' && input[prop]) {
                 score += Calculator.COEFFICIENTS[prop];
