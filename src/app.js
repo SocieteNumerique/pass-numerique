@@ -16,6 +16,7 @@ export default class App extends Component {
                     <div className="content">
                         <Router>
                             <Home path="/" />
+                            <Home path="/pass-numerique" />
                             <Home path="/home/:scale/:population/:density/:poverty/:previousBudget" />
                             <Territory path="/territory/:scale/:population/:density/:poverty/:previousBudget" />
                             <Territory path="/territory/:scale/:population/:density/:poverty/:previousBudget/:isTargetPublic/:hasOrganizedLocally" />
