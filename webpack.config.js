@@ -6,7 +6,8 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 Encore
     .setOutputPath('public/')
-    .setPublicPath('/')
+    .setPublicPath(process.env.PUBLIC_PATH || '/')
+    .setManifestKeyPrefix(process.env.PUBLIC_PATH || '/')
     .cleanupOutputBeforeBuild()
     .addEntry('app', './src/loader.js')
     .enableSassLoader()
