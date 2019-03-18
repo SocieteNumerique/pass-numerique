@@ -1,4 +1,4 @@
-# Simulateur de cofinancement du Pass Numérique par l'État
+# Simulateur de cofinancement du Pass Numérique
 
 Ce repository est l'application [Preact](https://github.com/developit/preact) qui propulse le 
 simulateur de cofinancement du Pass Numérique par l'État.
