@@ -1,22 +1,22 @@
-@import "fonts/fonts";
-@import "styles/vars-and-mixins";
+@import url('https://fonts.googleapis.com/css?family=ABeeZee|Nunito:400,700');
+@import './variables';
 
 body {
     margin: 0 auto;
-    background: linear-gradient(206deg, #306ffb, #36d1dc) no-repeat fixed #306ffb;
-    font-family: $font-roboto;
+    background: #f7f8fc;
+    font-family: $font-body;
     @include text--default;
-    color: #fff;
+    color: $color-body;
     text-align: center;
 }
 
-input, select {
+input[type="text"], input[type="number"], select {
     appearance: none;
     padding: 0 17px;
-    border: 0;
+    border: 1px solid #e0e0e0;
     height: 55px;
     box-sizing: border-box;
-    font-family: $font-roboto;
+    font-family: $font-body;
     background: #fff;
     color: #444;
     width: 100%;
@@ -43,120 +43,15 @@ select {
     }
 }
 
-.icon {
-    width: 16px;
-    height: 16px;
-    line-height: 1;
-    letter-spacing: normal;
-    text-transform: none;
-    display: inline-block;
-    white-space: nowrap;
-    word-wrap: normal;
-
-    &--facebook {
-        width: 9px;
-    }
-
-    &--twitter {
-        width: 15px;
-    }
-
-    &--em {
-        width: 40px;
-        height: 16px;
-    }
-
-    &--gh {
-        width: 21px;
-        height: 21px;
-    }
-
-    &--emoji {
-        width: 84px;
-        height: 84px;
-    }
-}
-
-.modal, .page {
+.page {
+    max-width: 375px;
+    margin: 0 auto;
     min-height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     flex: 1;
     width: 100%;
-}
-
-.modal {
-    background: $bg-teal;
-    transition: all 0.3s;
-    animation: slideup 0.3s steps(98) forwards;
-    z-index: 100;
-
-    &__content {
-        max-width: 375px;
-        margin: 0 auto;
-        transition: all 0.3s;
-        opacity: 0;
-        animation: showcontent 0.3s steps(100) forwards;
-    }
-
-    &__close {
-        position: absolute;
-        top: 0;
-        right: 0;
-        padding: 20px 30px;
-
-        a {
-            text-decoration: none;
-
-            &, &:visited, &:focus, &:hover {
-                color: #fff;
-            }
-
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-    }
-
-    &__title {
-        font-family: $font-gillsans;
-        font-size: 24px;
-        margin: 0 0 10px 0;
-        padding: 0 40px;
-    }
-
-    &__subtitle, &__text {
-        font-family: $font-roboto;
-        @include text--default;
-        margin: 0 0 25px 0;
-        padding: 0 40px;
-
-        &--small {
-            @include text--small;
-        }
-    }
-
-    &__field {
-        padding: 0 20px;
-
-        textarea {
-            padding: 30px;
-            border: 0;
-            height: 250px;
-            box-sizing: border-box;
-            font-size: 20px;
-            font-family: "Source Code Pro", "Menlo", "Courier New", monospace;
-            background: #fff;
-            width: 100%;
-            color: #666666;
-        }
-    }
-}
-
-.page {
-    max-width: 375px;
-    margin: 0 auto;
 
     &__button {
         display: block;
@@ -164,7 +59,7 @@ select {
         border: 0;
         box-sizing: border-box;
         @include text--default;
-        font-family: $font-roboto;
+        font-family: $font-body;
         background: $button-blue;
         width: 100%;
         margin-bottom: 13px;
@@ -182,6 +77,19 @@ select {
             text-decoration: none;
             padding: 6px;
         }
+
+        &--outline {
+            border: 1px solid $button-blue;
+            background: transparent;
+            color: $button-blue;
+
+            &:hover {
+                border: 1px solid $button-blue;
+                background: transparent;
+                color: $button-blue;
+                text-decoration: underline;
+            }
+        }
     }
 }
 
@@ -195,73 +103,71 @@ select {
 }
 
 /*
- * Footer
- */
-.footer {
-    background: rgba(255, 255, 255, 0.2);
-    text-align: center;
-    width: 100%;
-    font-size: 12px;
-    z-index: 200;
-
-    &__content {
-        padding: 10px;
-
-        .icon {
-            fill: #fff;
-        }
-    }
-
-    &__buttons {
-        display: flex;
-        justify-content: center;
-    }
-
-    &__button {
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        box-sizing: border-box;
-        font-size: 12px;
-        font-family: $font-roboto;
-        background: transparent;
-        margin: 0 5px;
-        border-radius: 3px;
-        color: #fff;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 30px;
-        min-width: 30px;
-        transition: 0.2s;
-
-        &:hover {
-            background-color: rgba(255, 255, 255, .2);
-        }
-    }
-
-    &__credits {
-        margin-top: 8px;
-
-        span, .icon {
-            display: inline-block;
-            vertical-align: middle;
-        }
-
-        .icon {
-            margin: 0 5px;
-        }
-    }
-}
-
-/*
- * Form error
+ * Form
  */
 .form-error {
-    color: #fff;
-    background: rgba(255, 0, 0, 0.3);
+    color: #FF0000;
+    background: rgba(255, 0, 0, 0.1);
     border-radius: 3px;
     margin-bottom: 13px;
     padding: 5px;
+}
+
+.form-checkbox {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    label {
+        display: flex;
+        align-items: flex-start;
+        margin: 5px 0;
+        text-align: left;
+        cursor: pointer;
+
+        &:before {
+            content: ' ';
+            width: 25px;
+            height: 25px;
+            min-width: 25px;
+            min-height: 25px;
+            margin-right: 10px;
+            border-width: 2px;
+            transition: all 0.2s;
+            background: #dedede;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        div {
+            margin-top: 2px;
+        }
+    }
+
+    &:hover label:before {
+        background: #ababab;
+    }
+
+    input[type='checkbox'] {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+
+        &:checked + label:before {
+            border-color: $button-blue;
+            background: $button-blue;
+            content: url("data:image/svg+xml;utf8,<svg width='14px' height='10px' viewBox='73 77 14 10' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><polygon id='check' stroke='none' fill='%23FFFFFF' fill-rule='evenodd' points='73.1888049 82.5586077 74.5051607 80.8107776 80.0959758 85.0260906 78.77962 86.7739208'></polygon><polygon id='mark' stroke='none' fill='%23FFFFFF' fill-rule='evenodd' points='77.2807085 85.3731308 85.0384399 77.0539824 86.6382761 78.5458538 78.8805447 86.8650022'></polygon></svg>");
+        }
+    }
+
+    &--disabled {
+        opacity: 0.6;
+
+        &:hover label:before {
+            background: #fff !important;
+        }
+    }
 }
 
 /*
@@ -297,6 +203,10 @@ select {
         margin: 0 0 25px 0;
     }
 
+    &__checkbox {
+        margin-bottom: 5px;
+    }
+
     &__field input[type="number"] {
         @media (max-width: $width-iphone5) {
             font-size: 14px;
@@ -325,56 +235,6 @@ select {
     }
 }
 
-/*
- * Exoneration
- */
-.exoneration {
-    &__icon {
-        margin: 0 0 10px 0;
-    }
-
-    &__title {
-        font-family: $font-gillsans;
-        font-size: 24px;
-        margin: 0 0 10px 0;
-        padding: 0;
-    }
-
-    &__subtitle {
-        @include h2;
-        margin-bottom: 20px;
-    }
-
-    &__label {
-        @include text--default;
-        margin: 0 0 15px 0;
-        padding: 0 20px;
-    }
-}
-
-/*
- * No exoneration
- */
-.noexo {
-    &__icon {
-        margin: 0 0 10px 0;
-    }
-
-    &__title {
-        @include h1;
-        margin: 0 0 10px 0;
-        padding: 0;
-    }
-
-    &__subtitle {
-        @include h2;
-        margin-bottom: 50px;
-    }
-}
-
-/*
- * Result
- */
 .result {
     &__title {
         @include h1;
@@ -382,25 +242,14 @@ select {
         padding: 0;
     }
 
-    &__years {
-        font-family: $font-roboto;
-        font-size: 24px;
-        font-weight: 500;
-        margin: 0 0 40px 0;
-    }
+    &__field {
+        margin-bottom: 20px;
+        text-align: left;
 
-    &__year {
-        display: inline-block;
-        margin: 0 0 15px 0;
-        padding: 2px 13px;
-
-        &--highlight {
-            color: white;
-            background-image: linear-gradient(to right, transparent 50%, #edf861 50%);
-            background-origin: 0;
-            background-size: 200% 50%;
-            transition: all 0.5s;
-            animation: highlighter 0.5s steps(100) forwards;
+        &__value {
+            margin-top: 2px;
+            font-size: 24px;
+            color: $color-dark;
         }
     }
 }

@@ -3,6 +3,10 @@ $width-phone: 375px;
 $width-iphone5: 320px;
 $button-blue: #0f4dcf;
 $bg-teal: #32a5ca;
+$color-dark: #21295e;
+$color-body: #7171a2;
+$font-title: 'ABeeZee', Helvetica, sans-serif;
+$font-body: 'Nunito', Helvetica, sans-serif;
 
 @mixin movement {
     transition: .2s;
@@ -26,14 +30,16 @@ $bg-teal: #32a5ca;
 }
 
 @mixin h1 {
-    font-family: $font-gillsans;
+    font-family: $font-title;
+    color: $color-dark;
     font-size: 24px;
     letter-spacing: -0.5px;
     line-height: 27px;
 }
 
 @mixin h2 {
-    font-family: $font-gillsans;
+    font-family: $font-title;
+    color: $color-dark;
     font-size: 18px;
     letter-spacing: -0.5px;
     line-height: 21px;
