@@ -1,84 +1,70 @@
 import { h, Component } from 'preact';
 import { route } from 'preact-router';
 
-import Calculator from '../services/calculator';
+import { Calculator } from '../simulator/calculator';
 
 export default class Home extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            status: null,
-            dependents: null,
-            income: null,
+            scale: null,
+            population: null,
+            density: null,
+            poverty: null,
+            previousBudget: null,
             error: null,
         };
-
-        this.handleStatusChange = this.handleStatusChange.bind(this);
-        this.handleDependentsChange = this.handleDependentsChange.bind(this);
-        this.handleIncomeEnterPressed = this.handleIncomeEnterPressed.bind(this);
-        this.handleIncomeChange = this.handleIncomeChange.bind(this);
-        this.handleButtonClick = this.handleButtonClick.bind(this);
     }
 
-    handleStatusChange(event) {
-        this.setState({
-            status: parseInt(event.target.value),
-        });
+    handleChange(property, value) {
+        value = parseInt(value);
+        if (isNaN(value) || value < 0) {
+            value = null;
+        }
+
+        this.setState({ [property]: value });
     }
 
-    handleDependentsChange(event) {
-        this.setState({
-            dependents: event.target.value,
-        });
-    }
-
-    handleIncomeEnterPressed(event) {
+    handleInputEnterPressed(event) {
         if (event.keyCode === 13) {
             this.handleButtonClick();
         }
     }
 
-    handleIncomeChange(event) {
-        this.setState({
-            income: isNaN(parseInt(event.target.value)) ? null : parseInt(event.target.value),
-        });
-    }
-
     handleButtonClick() {
-        if (!this.state.status) {
-            this.setState({
-                error: 'Votre situation familiale est requise',
-            });
-
+        if (!this.state.scale) {
+            this.setState({ error: 'L\'échelle territoriale est requise' });
             return;
         }
 
-        if (!this.state.dependents) {
-            this.setState({
-                error: 'Votre nombre de personnes à charge est requis',
-            });
-
+        if (!this.state.population) {
+            this.setState({ error: 'Le nombre d\'habitants est requis' });
             return;
         }
 
-        if (isNaN(parseInt(this.state.income))) {
-            this.setState({
-                error: 'Votre revenu fiscal de référence est requis',
-            });
-
+        if (!this.state.density) {
+            this.setState({ error: 'La densité de population est requise' });
             return;
         }
 
-        let calculator = new Calculator();
-
-        if (calculator.isExempted(this.state.status, this.state.dependents, this.state.income)) {
-            route('/exoneration/'+this.state.status+'/'+this.state.dependents+'/'+this.state.income);
-
+        if (!this.state.poverty) {
+            this.setState({ error: 'Le taux de pauvreté est requis' });
             return;
         }
 
-        route('/no-exoneration');
+        if (!this.state.previousBudget) {
+            this.setState({ error: 'Le budget alloué en 2019 au pass numérique est requis' });
+            return;
+        }
+
+        route('/territory/'+[
+            this.state.scale,
+            this.state.population,
+            this.state.density,
+            this.state.poverty,
+            this.state.previousBudget,
+        ].join('/'));
     }
 
     render() {
@@ -89,56 +75,60 @@ export default class Home extends Component {
                 </h1>
 
                 <div className="home__subtitle">
-                    Permettre à chacun d'acquérir des
-                    compétences numériques de base.
+                    Fiche d'identité du porteur de projet
                 </div>
 
                 {this.state.error ? <div className="form-error">{this.state.error}</div> : ''}
 
                 <div className="home__field">
-                    <select onChange={this.handleStatusChange}>
-                        <option selected disabled>Ma situation familiale</option>
-                        <option value={Calculator.STATUS_SINGLE}>Je suis célibataire</option>
-                        <option value={Calculator.STATUS_MARRIED}>Je suis marié(e) ou pacsé(e)</option>
-                        <option value={Calculator.STATUS_CONCUBINAGE}>Je suis en concubinage/colocation</option>
-                        <option value={Calculator.STATUS_WIDOW}>Je suis veuf/veuve</option>
-                    </select>
-                </div>
-
-                <div className="home__field">
-                    <select onChange={this.handleDependentsChange}>
-                        <option selected disabled>Nombre de personnes à charge</option>
-                        <option value="0">Aucune personne à charge</option>
-                        <option value="1">1 personne à charge</option>
-                        <option value="2">2 personnes à charge</option>
-                        <option value="3">3 personnes à charge</option>
-                        <option value="4">4 personnes à charge</option>
-                        <option value="5">5 personnes à charge</option>
-                        <option value="6">6 personnes à charge</option>
-                        <option value="7">7 personnes à charge</option>
-                        <option value="8">8 personnes à charge</option>
-                        <option value="9">9 personnes à charge</option>
-                        <option value="10">10 personnes à charge</option>
-                        <option value="0+">Ayant eu des personnes à charge</option>
+                    <select onChange={(e) => this.handleChange('scale', e.target.value)}>
+                        <option selected disabled>Échelle territoriale du porteur de projet</option>
+                        <option value={Calculator.SCALE_INTERMUNICIPAL}>Intercommunale</option>
+                        <option value={Calculator.SCALE_DEPARTMENTAL}>Départementale</option>
+                        <option value={Calculator.SCALE_INTERDEPARTMENTAL}>Interdépartementale</option>
+                        <option value={Calculator.SCALE_REGIONAL}>Régionale</option>
                     </select>
                 </div>
 
                 <div className="home__field">
                     <input type="number"
-                           placeholder="Revenu fiscal de référence (annuel)"
-                           value={this.state.income}
-                           onKeyUp={this.handleIncomeEnterPressed}
-                           onInput={this.handleIncomeChange}
+                           placeholder="Nombre d'habitants"
+                           value={this.state.population}
+                           onKeyUp={(e) => this.handleInputEnterPressed(e)}
+                           onInput={(e) => this.handleChange('population', e.target.value)}
                     />
                 </div>
 
-                <button type="button" className="home__explainer" onClick={this.props.onExplainationsClick}>
-                    Où le trouver ?
-                </button>
+                <div className="home__field">
+                    <input type="number"
+                           placeholder="Densité de population (en hab/km²)"
+                           value={this.state.density}
+                           onKeyUp={(e) => this.handleInputEnterPressed(e)}
+                           onInput={(e) => this.handleChange('density', e.target.value)}
+                    />
+                </div>
+
+                <div className="home__field">
+                    <input type="number"
+                           placeholder="Taux de pauvreté en % (INSEE 2015)"
+                           value={this.state.poverty}
+                           onKeyUp={(e) => this.handleInputEnterPressed(e)}
+                           onInput={(e) => this.handleChange('poverty', e.target.value)}
+                    />
+                </div>
+
+                <div className="home__field">
+                    <input type="number"
+                           placeholder="Budget pass numérique en 2019 (en €)"
+                           value={this.state.previousBudget}
+                           onKeyUp={(e) => this.handleInputEnterPressed(e)}
+                           onInput={(e) => this.handleChange('previousBudget', e.target.value)}
+                    />
+                </div>
 
                 <div className="home__submit">
-                    <button type="button" className="page__button" onClick={this.handleButtonClick}>
-                        C'est parti !
+                    <button type="button" className="page__button" onClick={() => this.handleButtonClick()}>
+                        Continuer
                     </button>
                 </div>
 

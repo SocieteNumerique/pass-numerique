@@ -3,12 +3,15 @@ import { route } from 'preact-router';
 
 export default class Result extends Component {
     componentWillMount() {
-        let taxes = [this.props.tax2018, this.props.tax2019, this.props.tax2020];
+        if (-1 === [1, 2, 3, 4].indexOf(parseInt(this.props.scale))) {
+            route('/not-found', true);
+        }
 
-        for (let i in taxes) {
-            if (isNaN(parseInt(taxes[i]))) {
-                route('/not-found', true);
-            }
+        if (isNaN(parseInt(this.props.population))
+            || isNaN(parseInt(this.props.density))
+            || isNaN(parseInt(this.props.poverty))
+            || isNaN(parseInt(this.props.previousBudget))) {
+            route('/not-found', true);
         }
     }
 
@@ -16,24 +19,26 @@ export default class Result extends Component {
         return (
             <div className="result">
                 <h1 className="result__title">
-                    Ma taxe d’habitation<br/>sera de ...
+                    Ma taxe d’habitation
+                    <br />
+                    sera de ...
                 </h1>
 
                 <div className="result__years">
                     <div className="result__year">
-                        {this.props.tax2018} € en 2018
+                        200 € en 2018
                     </div>
 
                     <br />
 
                     <div className="result__year">
-                        {this.props.tax2019} € en 2019
+                        100 € en 2019
                     </div>
 
                     <br />
 
                     <div className="result__year result__year--highlight">
-                        {this.props.tax2020} € en 2020
+                        0 € en 2020
                     </div>
                 </div>
 

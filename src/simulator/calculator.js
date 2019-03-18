@@ -1,13 +1,45 @@
 export class Calculator {
     compute(input) {
-        let score = 0;
+        if (!input.isTargetPublic) {
+            return { stateRate: 0, stateAmount: 0 };
+        }
 
-        // Integrate ratios to the average stats to the score
+        let rate = 0.2;
+        if (input.hasOrganizedLocally) {
+            rate += 0.15;
+        }
+
+        rate += this._computeTerritoryBonus(input);
+
+        if (input.hasHub) {
+            rate += 0.07;
+        }
+
+        if (input.areOthersAssociated) {
+            rate += 0.1;
+        }
+
+        if (input.hasEuFunds) {
+            rate += 0.1;
+        }
+
+        const total = input.previousBudget / (1 - rate);
+        const amount = total * rate;
+
+        return {
+            stateRate: Math.round(rate * 100) / 100,
+            stateAmount: (amount <= Calculator.MAX_AMOUNT) ? Math.round(amount) : Calculator.MAX_AMOUNT,
+        };
+    }
+
+    _computeTerritoryBonus(input) {
         const ratios = {
             population: (input.population / Calculator.NATIONAL_STATS[input.scale].population) - 1,
             density: (input.density / Calculator.NATIONAL_STATS[input.scale].density),
             poverty: input.poverty - Calculator.NATIONAL_STATS[input.scale].poverty,
         };
+
+        let score = 0;
 
         // Population
         if (ratios.population >= 0.1 && ratios.population < 0.2) {
@@ -48,27 +80,17 @@ export class Calculator {
             score += 25;
         }
 
-        // Integrate boolean properties in the score
-        for (let prop in Calculator.COEFFICIENTS) {
-            if (typeof input[prop] !== 'undefined' && input[prop]) {
-                score += Calculator.COEFFICIENTS[prop];
-            }
+        if (score >= 1 && score < 10) {
+            return 0.02;
+        } else if (score >= 10 && score < 20) {
+            return 0.03;
+        } else if (score >= 20 && score < 30) {
+            return 0.04;
+        } else if (score >= 30) {
+            return 0.05;
         }
 
-        let rate = Calculator.DEFAULT_RATE;
-        for (let rateMaxScore in Calculator.RATES) {
-            if (score <= rateMaxScore) {
-                rate = Calculator.RATES[rateMaxScore];
-                break;
-            }
-        }
-
-        const amount = rate * input.previousBudget;
-
-        return {
-            stateRate: rate,
-            stateAmount: (amount <= Calculator.MAX_AMOUNT) ? Math.round(amount) : Calculator.MAX_AMOUNT,
-        };
+        return 0;
     }
 }
 
@@ -99,29 +121,5 @@ Calculator.NATIONAL_STATS = {
         poverty: 0.148230769230769,
     },
 };
-
-Calculator.COEFFICIENTS = {
-    isRural: 2,
-    isCityDistrict: 2,
-    isCityHeart: 2,
-    isOverseas: 2,
-    isMountain: 2,
-    hasNoHub: 10,
-    areOthersAssociated: 30,
-    hasEuFunds: 5,
-    isOfferIdentified: 20,
-};
-
-Calculator.RATES = {
-    19: 0.2,
-    30: 0.3,
-    40: 0.4,
-    50: 0.5,
-    60: 0.6,
-    70: 0.7,
-    80: 0.8,
-    90: 0.9,
-};
-Calculator.DEFAULT_RATE = 1;
 
 Calculator.MAX_AMOUNT = 1500000;
