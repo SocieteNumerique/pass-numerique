@@ -4,7 +4,7 @@ set -e
 GH_REMOTE=$(git config remote.origin.url)
 
 # Prepare an empty gh-pages directory
-git clone git@github.com:simuletataxe/simuletataxe.github.io.git gh-pages
+git clone git@github.com:SocieteNumerique/pass-numerique.git gh-pages
 cd gh-pages
 git rm -rf . || true
 
