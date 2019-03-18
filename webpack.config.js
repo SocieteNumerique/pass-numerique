@@ -25,8 +25,8 @@ Encore
     .addPlugin(new HtmlWebpackHarddiskPlugin())
     .addPlugin(new CopyWebpackPlugin([
         {
-            from: 'src/images/th-social.png',
-            to: 'images/th-social.png',
+            from: 'src/images/sharer.png',
+            to: 'images/sharer.png',
         },
     ]))
     .addPlugin(new FaviconsWebpackPlugin({
@@ -37,7 +37,7 @@ Encore
         persistentCache: true,
         inject: true,
         background: '#fff',
-        title: 'Simule ta taxe',
+        title: 'Simulation Pass Numérique',
         icons: {
             android: true,
             appleIcon: true,
