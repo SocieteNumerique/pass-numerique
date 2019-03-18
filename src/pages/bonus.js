@@ -1,17 +1,14 @@
 import { h, Component } from 'preact';
 import { route } from 'preact-router';
-import {Calculator} from "../simulator/calculator";
 
-export default class Territory extends Component {
+export default class Bonus extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            isRural: false,
-            isCityDistrict: false,
-            isCityHeart: false,
-            isOverseas: false,
-            isMountain: false,
+            hasHub: false,
+            areOthersAssociated: false,
+            hasEuFunds: false,
         };
     }
 
@@ -39,11 +36,11 @@ export default class Territory extends Component {
             this.props.density,
             this.props.poverty,
             this.props.previousBudget,
-            this.state.isRural ? 1 : 0,
-            this.state.isCityDistrict ? 1 : 0,
-            this.state.isCityHeart ? 1 : 0,
-            this.state.isOverseas ? 1 : 0,
-            this.state.isMountain ? 1 : 0,
+            this.props.isTargetPublic,
+            this.props.hasOrganizedLocally,
+            this.state.hasHub ? 1 : 0,
+            this.state.areOthersAssociated ? 1 : 0,
+            this.state.hasEuFunds ? 1 : 0,
         ].join('/'));
     }
 
@@ -55,18 +52,16 @@ export default class Territory extends Component {
                 </h1>
 
                 <div className="home__subtitle">
-                    Type(s) de territoire(s) de déploiement
+                    Primes de subvention
                 </div>
-
-                {this.state.error ? <div className="form-error">{this.state.error}</div> : ''}
 
                 <div className="home__checkbox">
                     <div className="form-checkbox">
-                        <input type="checkbox" id="isRural"
-                               onChange={() => this.handleChange('isRural')} />
-                        <label htmlFor="isRural">
+                        <input type="checkbox" id="hasHub"
+                               onChange={() => this.handleChange('hasHub')} />
+                        <label htmlFor="hasHub">
                             <div>
-                                Territoire rural
+                                Un Hub de médiation numérique est présent sur le territoire.
                             </div>
                         </label>
                     </div>
@@ -74,11 +69,12 @@ export default class Territory extends Component {
 
                 <div className="home__checkbox">
                     <div className="form-checkbox">
-                        <input type="checkbox" id="isCityDistrict"
-                               onChange={() => this.handleChange('isCityDistrict')} />
-                        <label htmlFor="isCityDistrict">
+                        <input type="checkbox" id="areOthersAssociated"
+                               onChange={() => this.handleChange('areOthersAssociated')} />
+                        <label htmlFor="areOthersAssociated">
                             <div>
-                                Quartier politique de la ville
+                                Le(s) autre(s) porteur(s) de projet sur le même territoire sont associé(s)
+                                à la démarche.
                             </div>
                         </label>
                     </div>
@@ -86,35 +82,12 @@ export default class Territory extends Component {
 
                 <div className="home__checkbox">
                     <div className="form-checkbox">
-                        <input type="checkbox" id="isCityHeart"
-                               onChange={() => this.handleChange('isCityHeart')} />
-                        <label htmlFor="isCityHeart">
+                        <input type="checkbox" id="hasEuFunds"
+                               onChange={() => this.handleChange('hasEuFunds')} />
+                        <label htmlFor="hasEuFunds">
                             <div>
-                                Villes moyennes dans le cadre du plan "Action Cœur de Ville"
-                            </div>
-                        </label>
-                    </div>
-                </div>
-
-                <div className="home__checkbox">
-                    <div className="form-checkbox">
-                        <input type="checkbox" id="isOverseas"
-                               onChange={() => this.handleChange('isOverseas')} />
-                        <label htmlFor="isOverseas">
-                            <div>
-                                Outre-mer
-                            </div>
-                        </label>
-                    </div>
-                </div>
-
-                <div className="home__checkbox">
-                    <div className="form-checkbox">
-                        <input type="checkbox" id="isMountain"
-                               onChange={() => this.handleChange('isMountain')} />
-                        <label htmlFor="isMountain">
-                            <div>
-                                Territoire de montagne
+                                Des fonds européens sont mobilisés par la collectivité dans le cadre
+                                de l'achat de pass numériques.
                             </div>
                         </label>
                     </div>
@@ -124,7 +97,7 @@ export default class Territory extends Component {
 
                 <div className="home__submit">
                     <button type="button" className="page__button" onClick={() => this.handleButtonClick()}>
-                        Lancer la simulation
+                        Continuer
                     </button>
                 </div>
 

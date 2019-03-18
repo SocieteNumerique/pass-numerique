@@ -1,17 +1,13 @@
 import { h, Component } from 'preact';
 import { route } from 'preact-router';
-import {Calculator} from "../simulator/calculator";
 
 export default class Territory extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            isRural: false,
-            isCityDistrict: false,
-            isCityHeart: false,
-            isOverseas: false,
-            isMountain: false,
+            isTargetPublic: false,
+            hasOrganizedLocally: false,
         };
     }
 
@@ -33,17 +29,19 @@ export default class Territory extends Component {
     }
 
     handleButtonClick() {
-        route('/result/'+[
+        if (!this.state.isTargetPublic) {
+            route('/disqualified');
+            return;
+        }
+
+        route('/bonus/'+[
             this.props.scale,
             this.props.population,
             this.props.density,
             this.props.poverty,
             this.props.previousBudget,
-            this.state.isRural ? 1 : 0,
-            this.state.isCityDistrict ? 1 : 0,
-            this.state.isCityHeart ? 1 : 0,
-            this.state.isOverseas ? 1 : 0,
-            this.state.isMountain ? 1 : 0,
+            this.state.isTargetPublic ? 1 : 0,
+            this.state.hasOrganizedLocally ? 1 : 0,
         ].join('/'));
     }
 
@@ -55,18 +53,17 @@ export default class Territory extends Component {
                 </h1>
 
                 <div className="home__subtitle">
-                    Type(s) de territoire(s) de déploiement
+                    Évaluation du projet
                 </div>
-
-                {this.state.error ? <div className="form-error">{this.state.error}</div> : ''}
 
                 <div className="home__checkbox">
                     <div className="form-checkbox">
-                        <input type="checkbox" id="isRural"
-                               onChange={() => this.handleChange('isRural')} />
-                        <label htmlFor="isRural">
+                        <input type="checkbox" id="isTargetPublic"
+                               onChange={() => this.handleChange('isTargetPublic')} />
+                        <label htmlFor="isTargetPublic">
                             <div>
-                                Territoire rural
+                                Le projet cible des publics éloignés du numérique (jeunes non diplômés,
+                                personnes âgées, personnes isolées, personnes allophones).
                             </div>
                         </label>
                     </div>
@@ -74,47 +71,13 @@ export default class Territory extends Component {
 
                 <div className="home__checkbox">
                     <div className="form-checkbox">
-                        <input type="checkbox" id="isCityDistrict"
-                               onChange={() => this.handleChange('isCityDistrict')} />
-                        <label htmlFor="isCityDistrict">
+                        <input type="checkbox" id="hasOrganizedLocally"
+                               onChange={() => this.handleChange('hasOrganizedLocally')} />
+                        <label htmlFor="hasOrganizedLocally">
                             <div>
-                                Quartier politique de la ville
-                            </div>
-                        </label>
-                    </div>
-                </div>
-
-                <div className="home__checkbox">
-                    <div className="form-checkbox">
-                        <input type="checkbox" id="isCityHeart"
-                               onChange={() => this.handleChange('isCityHeart')} />
-                        <label htmlFor="isCityHeart">
-                            <div>
-                                Villes moyennes dans le cadre du plan "Action Cœur de Ville"
-                            </div>
-                        </label>
-                    </div>
-                </div>
-
-                <div className="home__checkbox">
-                    <div className="form-checkbox">
-                        <input type="checkbox" id="isOverseas"
-                               onChange={() => this.handleChange('isOverseas')} />
-                        <label htmlFor="isOverseas">
-                            <div>
-                                Outre-mer
-                            </div>
-                        </label>
-                    </div>
-                </div>
-
-                <div className="home__checkbox">
-                    <div className="form-checkbox">
-                        <input type="checkbox" id="isMountain"
-                               onChange={() => this.handleChange('isMountain')} />
-                        <label htmlFor="isMountain">
-                            <div>
-                                Territoire de montagne
+                                Le porteur de projet a engagé des démarches de consolidation et de
+                                structuration des acteurs de l'inclusion et de la médiation numériques
+                                sur son territoire.
                             </div>
                         </label>
                     </div>
@@ -124,7 +87,7 @@ export default class Territory extends Component {
 
                 <div className="home__submit">
                     <button type="button" className="page__button" onClick={() => this.handleButtonClick()}>
-                        Lancer la simulation
+                        Continuer
                     </button>
                 </div>
 

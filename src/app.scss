@@ -234,3 +234,22 @@ select {
         }
     }
 }
+
+.result {
+    &__title {
+        @include h1;
+        margin: 0 0 40px 0;
+        padding: 0;
+    }
+
+    &__field {
+        margin-bottom: 20px;
+        text-align: left;
+
+        &__value {
+            margin-top: 2px;
+            font-size: 24px;
+            color: $color-dark;
+        }
+    }
+}
