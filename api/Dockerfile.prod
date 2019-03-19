@@ -74,9 +74,9 @@ ENV APP_ENV=prod \
     DATABASE_URL="pgsql://passnumerique:passnumerique@db/passnumerique?serverVersion=9.6"
 
 RUN mkdir var && \
-    composer install --prefer-dist --no-interaction --no-ansi --no-dev --no-autoloader --no-scripts --no-progress --no-suggest && \
+    composer install --prefer-dist --no-interaction --no-ansi --no-autoloader --no-scripts --no-progress --no-suggest && \
     composer clear-cache && \
-    composer dump-autoload --optimize --classmap-authoritative --no-dev && \
+    composer dump-autoload --optimize --classmap-authoritative && \
     bin/console cache:clear --no-warmup && \
     bin/console cache:warmup && \
     bin/console assets:install && \

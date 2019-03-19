@@ -1,3 +1,5 @@
+supervisord.pid
+supervisord.log
 
 ###> symfony/framework-bundle ###
 /.env.local
