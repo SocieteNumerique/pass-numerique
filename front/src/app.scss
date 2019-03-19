@@ -12,9 +12,9 @@ body {
 
 input[type="text"], input[type="number"], select {
     appearance: none;
-    padding: 0 17px;
+    padding: 2px 17px 0 17px;
     border: 1px solid #e0e0e0;
-    height: 55px;
+    height: 48px;
     box-sizing: border-box;
     font-family: $font-body;
     background: #fff;
@@ -87,6 +87,26 @@ select {
                 border: 1px solid $button-blue;
                 background: transparent;
                 color: $button-blue;
+                text-decoration: underline;
+            }
+        }
+
+        &--link {
+            border: 0;
+            background: transparent;
+            color: $button-blue;
+            padding: 0;
+            outline: none;
+
+            &:hover, &:focus, &:active {
+                border: 0;
+                background: transparent;
+                color: $button-blue;
+                box-shadow: none;
+                transform: none;
+            }
+
+            &:hover {
                 text-decoration: underline;
             }
         }
@@ -217,25 +237,8 @@ select {
         }
     }
 
-    &__explainer {
-        display: block;
-        background: transparent;
-        border: 0;
-        color: white;
-        text-align: right;
-        width: 100%;
-        margin: -10px 0 8px;
-        font-size: 12px;
-        transition: .2s all;
-        cursor: pointer;
+    &__switch-button {
 
-        @media (max-width: $width-phone) {
-            margin-bottom: 15px;
-        }
-
-        &:hover {
-            opacity: 0.8;
-        }
     }
 }
 

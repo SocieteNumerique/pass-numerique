@@ -13,6 +13,8 @@ export default class Home extends Component {
             density: this.props.density ? parseFloat(this.props.density) + '' : null,
             poverty: this.props.poverty ? parseFloat(this.props.poverty) + '' : null,
             previousBudget: parseInt(this.props.previousBudget),
+            displayAutocomplete: true,
+            autocompleteCode: '',
             error: null,
         };
     }
@@ -118,39 +120,68 @@ export default class Home extends Component {
 
                 <div className="home__field">
                     <input type="number"
-                           placeholder="Nombre d'habitants"
-                           value={this.state.population}
-                           onKeyUp={(e) => this.handleInputEnterPressed(e)}
-                           onInput={(e) => this.handleIntChange('population', e.target.value)}
-                    />
-                </div>
-
-                <div className="home__field">
-                    <input type="text"
-                           placeholder="Densité de population (en hab/km²)"
-                           value={this.state.density}
-                           onKeyUp={(e) => this.handleInputEnterPressed(e)}
-                           onInput={(e) => this.setState({ density: e.target.value })}
-                    />
-                </div>
-
-                <div className="home__field">
-                    <input type="text"
-                           placeholder="Taux de pauvreté en % (INSEE 2015)"
-                           value={this.state.poverty}
-                           onKeyUp={(e) => this.handleInputEnterPressed(e)}
-                           onInput={(e) => this.setState({ poverty: e.target.value })}
-                    />
-                </div>
-
-                <div className="home__field">
-                    <input type="number"
                            placeholder="Budget pass numérique en 2019 (en €)"
                            value={this.state.previousBudget}
                            onKeyUp={(e) => this.handleInputEnterPressed(e)}
                            onInput={(e) => this.handleIntChange('previousBudget', e.target.value)}
                     />
                 </div>
+
+                <br />
+
+                {this.state.displayAutocomplete
+                    ? (
+                        <div>
+                            <div className="home__field">
+                                <input type="text"
+                                       placeholder="Code INSEE du territoire"
+                                       value={this.state.autocompleteCode}
+                                       onKeyUp={(e) => this.handleInputEnterPressed(e)}
+                                />
+                            </div>
+                            <button type="button" onClick={() => this.setState({ displayAutocomplete: false })}
+                                    className="home__switch-button page__button page__button--link">
+                                Ou entrer les informations manuellement
+                            </button>
+                        </div>
+                    )
+                    : (
+                        <div>
+                            <div className="home__field">
+                                <input type="number"
+                                       placeholder="Nombre d'habitants"
+                                       value={this.state.population}
+                                       onKeyUp={(e) => this.handleInputEnterPressed(e)}
+                                       onInput={(e) => this.handleChange('population', e.target.value)}
+                                />
+                            </div>
+
+                            <div className="home__field">
+                                <input type="number"
+                                       placeholder="Densité de population (en hab/km²)"
+                                       value={this.state.density}
+                                       onKeyUp={(e) => this.handleInputEnterPressed(e)}
+                                       onInput={(e) => this.handleChange('density', e.target.value)}
+                                />
+                            </div>
+
+                            <div className="home__field">
+                                <input type="number"
+                                       placeholder="Taux de pauvreté en % (INSEE 2015)"
+                                       value={this.state.poverty}
+                                       onKeyUp={(e) => this.handleInputEnterPressed(e)}
+                                       onInput={(e) => this.handleChange('poverty', e.target.value)}
+                                />
+                            </div>
+                            <button type="button" onClick={() => this.setState({ displayAutocomplete: true })}
+                                    className="home__switch-button page__button page__button--link">
+                                Ou indiquer le code INSEE du territoire
+                            </button>
+                        </div>
+                    )
+                }
+
+                <br />
 
                 <div className="home__submit">
                     <button type="button" className="page__button" onClick={() => this.handleButtonClick()}>
