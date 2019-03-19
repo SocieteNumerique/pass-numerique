@@ -1,0 +1,5 @@
+api_platform:
+    title: 'Pass Numérique - API de statistiques'
+    description: 'API utilisée par le simulateur de cofinancement du Pass Numérique de Société Numérique'
+    mapping:
+        paths: ['%kernel.project_dir%/src/Entity']

@@ -24,3 +24,23 @@
 2019-03-19 11:21:18,922 INFO spawned: 'php-fpm' with pid 11
 2019-03-19 11:21:19,971 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
 2019-03-19 11:21:19,971 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-19 13:41:20,552 WARN received SIGTERM indicating exit request
+2019-03-19 13:41:20,552 INFO waiting for nginx, php-fpm to die
+2019-03-19 13:41:20,557 INFO stopped: php-fpm (exit status 0)
+2019-03-19 13:41:20,609 INFO stopped: nginx (exit status 0)
+2019-03-19 13:41:22,417 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-03-19 13:41:22,419 INFO supervisord started with pid 1
+2019-03-19 13:41:23,421 INFO spawned: 'nginx' with pid 11
+2019-03-19 13:41:23,423 INFO spawned: 'php-fpm' with pid 12
+2019-03-19 13:41:24,494 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-19 13:41:24,495 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-19 13:42:19,035 WARN received SIGTERM indicating exit request
+2019-03-19 13:42:19,035 INFO waiting for nginx, php-fpm to die
+2019-03-19 13:42:19,044 INFO stopped: php-fpm (exit status 0)
+2019-03-19 13:42:19,113 INFO stopped: nginx (exit status 0)
+2019-03-19 13:42:42,174 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-03-19 13:42:42,184 INFO supervisord started with pid 1
+2019-03-19 13:42:43,187 INFO spawned: 'nginx' with pid 10
+2019-03-19 13:42:43,190 INFO spawned: 'php-fpm' with pid 11
+2019-03-19 13:42:44,231 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-19 13:42:44,231 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
