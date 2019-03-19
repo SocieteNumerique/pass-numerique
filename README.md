@@ -1,31 +1,8 @@
 # Simulateur de cofinancement du Pass Numérique
 
-Ce repository est l'application [Preact](https://github.com/developit/preact) qui propulse le 
+Ce repository est l'application [Symfony](http://symfony.com) et 
+[Preact](https://github.com/developit/preact) qui propulse le 
 simulateur de cofinancement du Pass Numérique par l'État.
-
-## Pour commencer
-
-Ce projet utilise le gestionnaire de paquets [Yarn](https://yarnpkg.com). Installez-le avant de pouvoir commencer.
-
-Une fois Yarn disponible globalement, lancez les commandes suivantes :
-
-**Installer les dépendances**
-
-```
-yarn install 
-```
-
-**Lancer le serveur de développement**
-
-```
-yarn dev
-```
-
-**Minifier les fichiers pour la production**
-
-```
-yarn prod
-```
 
 ## Remerciements
 

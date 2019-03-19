@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "echo 'Starting webpack-dev-server on http://localhost:9000 ...' && node_modules/.bin/encore dev-server --port 9000 --hot",
+    "dev": "echo 'Starting webpack-dev-server ...' && node_modules/.bin/encore dev-server --port 80 --host 0.0.0.0 --hot",
     "prod": "node_modules/.bin/encore production",
     "test": "node_modules/.bin/jest",
     "test-coverage": "node_modules/.bin/jest --coverage"

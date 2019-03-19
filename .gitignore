@@ -1,5 +1,1 @@
-/yarn-error.log
-/node_modules
-/public
-/coverage
-/gh-pages
+docker-compose.override.yaml

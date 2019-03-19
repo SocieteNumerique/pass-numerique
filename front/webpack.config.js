@@ -21,7 +21,8 @@ Encore
     })
     .addPlugin(new HtmlWebpackPlugin({
         template: 'src/index.ejs',
-        alwaysWriteToDisk: true
+        alwaysWriteToDisk: true,
+        environment: Encore.isProduction() ? 'prod' : 'dev',
     }))
     .addPlugin(new HtmlWebpackHarddiskPlugin())
     .addPlugin(new CopyWebpackPlugin([
