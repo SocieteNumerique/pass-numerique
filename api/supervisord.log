@@ -1,0 +1,26 @@
+2019-03-19 11:20:32,995 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-03-19 11:20:32,996 INFO supervisord started with pid 1
+2019-03-19 11:20:34,000 INFO spawned: 'nginx' with pid 10
+2019-03-19 11:20:34,006 INFO spawned: 'php-fpm' with pid 11
+2019-03-19 11:20:35,048 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-19 11:20:35,048 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-19 11:20:47,182 WARN received SIGTERM indicating exit request
+2019-03-19 11:20:47,182 INFO waiting for nginx, php-fpm to die
+2019-03-19 11:20:47,185 INFO stopped: php-fpm (exit status 0)
+2019-03-19 11:20:47,241 INFO stopped: nginx (exit status 0)
+2019-03-19 11:20:48,938 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-03-19 11:20:48,939 INFO supervisord started with pid 1
+2019-03-19 11:20:49,941 INFO spawned: 'nginx' with pid 11
+2019-03-19 11:20:49,942 INFO spawned: 'php-fpm' with pid 12
+2019-03-19 11:20:50,980 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-19 11:20:50,980 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-19 11:21:16,271 WARN received SIGTERM indicating exit request
+2019-03-19 11:21:16,271 INFO waiting for nginx, php-fpm to die
+2019-03-19 11:21:16,275 INFO stopped: php-fpm (exit status 0)
+2019-03-19 11:21:16,317 INFO stopped: nginx (exit status 0)
+2019-03-19 11:21:17,917 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-03-19 11:21:17,918 INFO supervisord started with pid 1
+2019-03-19 11:21:18,921 INFO spawned: 'nginx' with pid 10
+2019-03-19 11:21:18,922 INFO spawned: 'php-fpm' with pid 11
+2019-03-19 11:21:19,971 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-19 11:21:19,971 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
