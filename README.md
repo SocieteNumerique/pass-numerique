@@ -1,31 +1,29 @@
 # Simulateur de cofinancement du Pass Numérique
 
-Ce repository est l'application [Preact](https://github.com/developit/preact) qui propulse le 
+Ce repository est l'application [Symfony](http://symfony.com) et 
+[Preact](https://github.com/developit/preact) qui propulse le 
 simulateur de cofinancement du Pass Numérique par l'État.
 
-## Pour commencer
+## Utilisation
 
-Ce projet utilise le gestionnaire de paquets [Yarn](https://yarnpkg.com). Installez-le avant de pouvoir commencer.
+Ce projet utilise [Docker](https://docs.docker.com/install/) et [Docker-Compose](https://docs.docker.com/compose/install/).
 
-Une fois Yarn disponible globalement, lancez les commandes suivantes :
-
-**Installer les dépendances**
+Pour démarrer, lancez les containers:
 
 ```
-yarn install 
+# N'hésitez pas à modifier le fichier copié docker-compose.override.yaml à vos besoins
+$ cp docker-compose.override.yaml.dist docker-compose.override.yaml
+
+$ docker-compose up -d
 ```
 
-**Lancer le serveur de développement**
+Une fois les containers lancés, vous pouvez lancer le serveur de développement dans le container `front`:
 
 ```
-yarn dev
+docker-compose exec front yarn dev
 ```
 
-**Minifier les fichiers pour la production**
-
-```
-yarn prod
-```
+Puis accédez à [http://localhost](http://localhost).
 
 ## Remerciements
 
