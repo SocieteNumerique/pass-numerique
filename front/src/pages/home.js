@@ -75,7 +75,7 @@ export default class Home extends Component {
                 </h1>
 
                 <div className="home__subtitle">
-                    Fiche d'identité du porteur de projet
+                    Estimation du co-financement de l’Etat
                 </div>
 
                 {this.state.error ? <div className="form-error">{this.state.error}</div> : ''}
@@ -147,9 +147,8 @@ export default class Home extends Component {
                 </div>
 
                 <div className="legalities">
-                    Le calcul effectué est purement anonyme et n’a qu’une valeur indicative.
-                    Il dépend uniquement des éléments en notre possession et ne préjuge en rien
-                    du montant qui sera finalement retenu par l’administration fiscale.
+                    Le calcul effectué n’a qu’une valeur indicative pour l’instruction du dossier.
+                    Il ne préjuge pas du montant qui sera finalement attribué par l’Agence du Numérique.
                 </div>
             </div>
         )

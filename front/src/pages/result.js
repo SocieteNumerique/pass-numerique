@@ -57,24 +57,6 @@ export default class Result extends Component {
 
                 <div className="result__field">
                     <div className="result__field__label">
-                        Budget estimé du porteur de projet
-                    </div>
-                    <div className="result__field__value">
-                        {parseInt(this.props.previousBudget).toLocaleString('fr')} €
-                    </div>
-                </div>
-
-                <div className="result__field">
-                    <div className="result__field__label">
-                        Taux estimé de cofinancement de l'Etat
-                    </div>
-                    <div className="result__field__value">
-                        {Math.round(result.stateRate * 100)}%
-                    </div>
-                </div>
-
-                <div className="result__field">
-                    <div className="result__field__label">
                         Montant estimé du cofinancement de l'Etat
                     </div>
                     <div className="result__field__value">
@@ -84,10 +66,28 @@ export default class Result extends Component {
 
                 <div className="result__field">
                     <div className="result__field__label">
+                        Budget estimé du porteur de projet
+                    </div>
+                    <div className="result__field__value">
+                        {parseInt(this.props.previousBudget).toLocaleString('fr')} €
+                    </div>
+                </div>
+
+                <div className="result__field">
+                    <div className="result__field__label">
                         Budget total du projet
                     </div>
                     <div className="result__field__value">
                         {total.toLocaleString('fr')} €
+                    </div>
+                </div>
+
+                <div className="result__field">
+                    <div className="result__field__label">
+                        Taux estimé de cofinancement de l'Etat
+                    </div>
+                    <div className="result__field__value">
+                        {Math.round(result.stateRate * 100)}%
                     </div>
                 </div>
 
