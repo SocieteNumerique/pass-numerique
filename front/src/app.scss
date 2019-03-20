@@ -24,6 +24,16 @@ input[type="text"], input[type="number"], select {
     border-radius: 3px;
     @include text--default;
     @include movement;
+
+    &[disabled] {
+        background: #eee;
+
+        &, &:hover {
+            transform: none !important;
+            transition: none !important;
+            box-shadow: none !important;
+        }
+    }
 }
 
 select {
@@ -231,14 +241,29 @@ select {
         margin-bottom: 5px;
     }
 
-    &__field input[type="number"] {
-        @media (max-width: $width-iphone5) {
-            font-size: 14px;
+    &__field {
+        input[type="number"] {
+            @media (max-width: $width-iphone5) {
+                font-size: 14px;
+            }
+        }
+
+        &__input-loading {
+            background: url('./images/loader.gif') no-repeat 100% 50% #fff !important;
         }
     }
 
-    &__switch-button {
-
+    &__territory-result {
+        padding: 5px 17px 2px 17px;
+        border: 1px solid #e0e0e0;
+        box-sizing: border-box;
+        font-family: $font-body;
+        background: #eee;
+        color: #444;
+        width: 100%;
+        margin-bottom: 10px;
+        border-radius: 3px;
+        @include text--default;
     }
 }
 
