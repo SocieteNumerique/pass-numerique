@@ -40,7 +40,7 @@ class ImportStatsCommand extends Command
         $output->writeln('    Clearing previous data ...');
         $this->manager->getRepository(AreaStats::class)->clearAll();
 
-        foreach ($toImport as $codePrefix => $filename) {
+        foreach ($toImport as $scale => $filename) {
             $output->write('    Importing '.$filename.' ... ');
 
             $csv = Reader::createFromPath($filename);
@@ -63,7 +63,8 @@ class ImportStatsCommand extends Command
                 }
 
                 $this->manager->persist(new AreaStats(
-                    $codePrefix.'-'.$code,
+                    $scale,
+                    $code,
                     trim($record['Libellé']),
                     $population,
                     $density,

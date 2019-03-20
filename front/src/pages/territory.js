@@ -6,9 +6,20 @@ export default class Territory extends Component {
         super(props);
 
         this.state = {
-            isTargetPublic: this.props.isTargetPublic ? !!parseInt(this.props.isTargetPublic) : false,
-            hasOrganizedLocally: this.props.hasOrganizedLocally ? !!parseInt(this.props.hasOrganizedLocally) : false,
+            population: this.parseStat(this.props.population),
+            density: this.parseStat(this.props.density),
+            poverty: this.parseStat(this.props.poverty),
         };
+    }
+
+    parseStat(value) {
+        value = parseFloat(value);
+
+        if (isNaN(value) || value < 0) {
+            return '';
+        }
+
+        return value + '';
     }
 
     componentWillMount() {
@@ -16,43 +27,50 @@ export default class Territory extends Component {
             route('/not-found', true);
         }
 
-        if (isNaN(parseInt(this.props.population))
-            || isNaN(parseFloat(this.props.density))
-            || isNaN(parseFloat(this.props.poverty))
-            || isNaN(parseInt(this.props.previousBudget))) {
+        if (isNaN(parseInt(this.props.previousBudget))) {
             route('/not-found', true);
         }
     }
 
-    handleChange(property) {
-        this.setState({ [property]: !this.state[property] });
-    }
-
     handleButtonClick() {
-        if (!this.state.isTargetPublic) {
-            route('/disqualified');
+        if (!this.state.population) {
+            this.setState({ error: 'Le nombre d\'habitants est requis' });
             return;
         }
 
-        route('/bonus/'+[
+        if (!this.state.density) {
+            this.setState({ error: 'La densité de population est requise' });
+            return;
+        }
+
+        const density = parseFloat(this.state.density.replace(',', '.'));
+        if (isNaN(density)) {
+            this.setState({ error: 'Cette densité de population est invalide' });
+            return;
+        }
+
+        if (!this.state.poverty) {
+            this.setState({ error: 'Le taux de pauvreté est requis' });
+            return;
+        }
+
+        const poverty = parseFloat(this.state.poverty.replace(',', '.'));
+        if (isNaN(poverty)) {
+            this.setState({ error: 'Ce taux de pauvreté est invalide' });
+            return;
+        }
+
+        route('/community/'+[
             this.props.scale,
-            this.props.population,
-            this.props.density,
-            this.props.poverty,
             this.props.previousBudget,
-            this.state.isTargetPublic ? 1 : 0,
-            this.state.hasOrganizedLocally ? 1 : 0,
+            density,
+            poverty,
+            this.state.population,
         ].join('/'));
     }
 
     handleBackClick() {
-        route('/home/'+[
-            this.props.scale,
-            this.props.population,
-            this.props.density,
-            this.props.poverty,
-            this.props.previousBudget,
-        ].join('/'));
+        route('/home/'+[this.props.scale, this.props.previousBudget].join('/'));
     }
 
     render() {
@@ -63,34 +81,42 @@ export default class Territory extends Component {
                 </h1>
 
                 <div className="home__subtitle">
-                    Évaluation du projet
+                    Fiche d'identité du porteur de projet
                 </div>
 
-                <div className="home__checkbox">
-                    <div className="form-checkbox">
-                        <input type="checkbox" id="isTargetPublic" checked={this.state.isTargetPublic}
-                               onChange={() => this.handleChange('isTargetPublic')} />
-                        <label htmlFor="isTargetPublic">
-                            <div>
-                                Le projet cible des publics éloignés du numérique (jeunes non diplômés,
-                                personnes âgées, personnes isolées, personnes allophones).
-                            </div>
-                        </label>
+                {this.state.error ? <div className="form-error">{this.state.error}</div> : ''}
+
+                <div className="home__field">
+                    <div className="home__field__label">
+                        Nombre d'habitants
                     </div>
+                    <input type="number"
+                           value={this.state.population}
+                           onKeyUp={(e) => this.handleInputEnterPressed(e)}
+                           onInput={(e) => this.setState({ population: parseInt(e.target.value) })}
+                    />
                 </div>
 
-                <div className="home__checkbox">
-                    <div className="form-checkbox">
-                        <input type="checkbox" id="hasOrganizedLocally" checked={this.state.hasOrganizedLocally}
-                               onChange={() => this.handleChange('hasOrganizedLocally')} />
-                        <label htmlFor="hasOrganizedLocally">
-                            <div>
-                                Le porteur de projet a engagé des démarches de consolidation et de
-                                structuration des acteurs de l'inclusion et de la médiation numériques
-                                sur son territoire.
-                            </div>
-                        </label>
+                <div className="home__field">
+                    <div className="home__field__label">
+                        Densité de population (en hab/km²)
                     </div>
+                    <input type="text"
+                           value={this.state.density}
+                           onKeyUp={(e) => this.handleInputEnterPressed(e)}
+                           onInput={(e) => this.setState({ density: e.target.value })}
+                    />
+                </div>
+
+                <div className="home__field">
+                    <div className="home__field__label">
+                        Taux de pauvreté en % (INSEE 2015)
+                    </div>
+                    <input type="text"
+                           value={this.state.poverty}
+                           onKeyUp={(e) => this.handleInputEnterPressed(e)}
+                           onInput={(e) => this.setState({ poverty: e.target.value })}
+                    />
                 </div>
 
                 <br />
@@ -99,12 +125,12 @@ export default class Territory extends Component {
                     <button type="button" className="page__button" onClick={() => this.handleButtonClick()}>
                         Continuer
                     </button>
-                </div>
 
-                <button type="button" className="page__button page__button--small page__button--outline"
-                        onClick={() => this.handleBackClick()}>
-                    Retour
-                </button>
+                    <button type="button" className="page__button page__button--small page__button--outline"
+                            onClick={() => this.handleBackClick()}>
+                        Retour
+                    </button>
+                </div>
             </div>
         )
     }
