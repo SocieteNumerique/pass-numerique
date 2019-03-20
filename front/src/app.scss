@@ -26,7 +26,7 @@ input[type="text"], input[type="number"], select {
     @include movement;
 
     &[disabled] {
-        background: #eee;
+        background: #ebebeb;
 
         &, &:hover {
             transform: none !important;
@@ -249,7 +249,15 @@ select {
         }
 
         &__input-loading {
+            padding-right: 32px !important;
             background: url('./images/loader.gif') no-repeat 100% 50% #fff !important;
+        }
+
+        &__label {
+            text-align: left;
+            font-size: 12px;
+            text-transform: uppercase;
+            margin-bottom: 2px;
         }
     }
 

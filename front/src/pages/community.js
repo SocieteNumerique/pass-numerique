@@ -46,7 +46,7 @@ export default class Community extends Component {
     }
 
     handleBackClick() {
-        route('/home/'+[
+        route('/territory/'+[
             this.props.scale,
             this.props.population,
             this.props.density,

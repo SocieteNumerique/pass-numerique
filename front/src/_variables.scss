@@ -9,7 +9,8 @@ $font-title: 'ABeeZee', Helvetica, sans-serif;
 $font-body: 'Nunito', Helvetica, sans-serif;
 
 @mixin movement {
-    transition: .2s;
+    transition: all .2s;
+    transition-property: box-shadow, transform;
 
     &:hover,
     &:active,

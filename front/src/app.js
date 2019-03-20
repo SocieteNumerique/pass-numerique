@@ -18,7 +18,7 @@ export default class App extends Component {
                         <Router>
                             <Home path="/" />
                             <Home path="/pass-numerique" />
-                            <Home path="/home/:scale/:population/:density/:poverty/:previousBudget" />
+                            <Home path="/home/:scale/:previousBudget" />
                             <Territory path="/territory/:scale/:previousBudget" />
                             <Territory path="/territory/:scale/:previousBudget/:density/:poverty/:population" />
                             <Community path="/community/:scale/:previousBudget/:density/:poverty/:population" />

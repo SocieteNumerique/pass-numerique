@@ -1,16 +1,25 @@
 import { h, Component } from 'preact';
 import { route } from 'preact-router';
-import {Calculator} from "../simulator/calculator";
 
 export default class Territory extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            population: parseInt(this.props.population),
-            density: parseInt(this.props.density),
-            poverty: parseInt(this.props.poverty),
+            population: this.parseStat(this.props.population),
+            density: this.parseStat(this.props.density),
+            poverty: this.parseStat(this.props.poverty),
         };
+    }
+
+    parseStat(value) {
+        value = parseFloat(value);
+
+        if (isNaN(value) || value < 0) {
+            return '';
+        }
+
+        return value + '';
     }
 
     componentWillMount() {
@@ -18,20 +27,12 @@ export default class Territory extends Component {
             route('/not-found', true);
         }
 
-        if (isNaN(parseInt(this.props.population))
-            || isNaN(parseFloat(this.props.density))
-            || isNaN(parseFloat(this.props.poverty))
-            || isNaN(parseInt(this.props.previousBudget))) {
+        if (isNaN(parseInt(this.props.previousBudget))) {
             route('/not-found', true);
         }
     }
 
     handleButtonClick() {
-        if (!this.state.scale) {
-            this.setState({ error: 'L\'échelle territoriale est requise' });
-            return;
-        }
-
         if (!this.state.population) {
             this.setState({ error: 'Le nombre d\'habitants est requis' });
             return;
@@ -42,23 +43,34 @@ export default class Territory extends Component {
             return;
         }
 
+        const density = parseFloat(this.state.density.replace(',', '.'));
+        if (isNaN(density)) {
+            this.setState({ error: 'Cette densité de population est invalide' });
+            return;
+        }
+
         if (!this.state.poverty) {
             this.setState({ error: 'Le taux de pauvreté est requis' });
             return;
         }
 
-        if (!this.state.previousBudget) {
-            this.setState({ error: 'Le budget alloué en 2019 au pass numérique est requis' });
+        const poverty = parseFloat(this.state.poverty.replace(',', '.'));
+        if (isNaN(poverty)) {
+            this.setState({ error: 'Ce taux de pauvreté est invalide' });
             return;
         }
 
-        route('/territory/'+[
-            this.state.scale,
+        route('/community/'+[
+            this.props.scale,
+            this.props.previousBudget,
+            density,
+            poverty,
             this.state.population,
-            this.state.density,
-            this.state.poverty,
-            this.state.previousBudget,
         ].join('/'));
+    }
+
+    handleBackClick() {
+        route('/home/'+[this.props.scale, this.props.previousBudget].join('/'));
     }
 
     render() {
@@ -75,101 +87,48 @@ export default class Territory extends Component {
                 {this.state.error ? <div className="form-error">{this.state.error}</div> : ''}
 
                 <div className="home__field">
-                    <select onChange={(e) => this.handleChange('scale', e.target.value)}>
-                        <option selected={!this.state.scale} disabled>
-                            Échelle territoriale du porteur de projet
-                        </option>
-                        <option selected={this.state.scale === Calculator.SCALE_INTERMUNICIPAL}
-                                value={Calculator.SCALE_INTERMUNICIPAL}>
-                            Intercommunale
-                        </option>
-                        <option selected={this.state.scale === Calculator.SCALE_DEPARTMENTAL}
-                                value={Calculator.SCALE_DEPARTMENTAL}>
-                            Départementale
-                        </option>
-                        <option selected={this.state.scale === Calculator.SCALE_INTERDEPARTMENTAL}
-                                value={Calculator.SCALE_INTERDEPARTMENTAL}>
-                            Interdépartementale
-                        </option>
-                        <option selected={this.state.scale === Calculator.SCALE_REGIONAL}
-                                value={Calculator.SCALE_REGIONAL}>
-                            Régionale
-                        </option>
-                    </select>
-                </div>
-
-                <div className="home__field">
+                    <div className="home__field__label">
+                        Nombre d'habitants
+                    </div>
                     <input type="number"
-                           placeholder="Budget pass numérique en 2019 (en €)"
-                           value={this.state.previousBudget}
+                           value={this.state.population}
                            onKeyUp={(e) => this.handleInputEnterPressed(e)}
-                           onInput={(e) => this.handleChange('previousBudget', e.target.value)}
+                           onInput={(e) => this.setState({ population: parseInt(e.target.value) })}
                     />
                 </div>
 
-                <br />
+                <div className="home__field">
+                    <div className="home__field__label">
+                        Densité de population (en hab/km²)
+                    </div>
+                    <input type="text"
+                           value={this.state.density}
+                           onKeyUp={(e) => this.handleInputEnterPressed(e)}
+                           onInput={(e) => this.setState({ density: e.target.value })}
+                    />
+                </div>
 
-                {this.state.displayAutocomplete
-                    ? (
-                        <div>
-                            <div className="home__field">
-                                <input type="text"
-                                       placeholder="Code INSEE du territoire"
-                                       className="home__field__input-loading"
-                                       value={this.state.autocompleteCode}
-                                       onChange={(e) => this.handleInputEnterPressed()}
-                                />
-                            </div>
-                            <div className="home__territory-result">
-                                Saint Georges de Reintembault
-                            </div>
-                            <button type="button" onClick={() => this.setState({ displayAutocomplete: false })}
-                                    className="home__switch-button page__button page__button--link">
-                                Ou entrer les informations manuellement
-                            </button>
-                        </div>
-                    )
-                    : (
-                        <div>
-                            <div className="home__field">
-                                <input type="number"
-                                       placeholder="Nombre d'habitants"
-                                       value={this.state.population}
-                                       onKeyUp={(e) => this.handleInputEnterPressed(e)}
-                                       onInput={(e) => this.handleChange('population', e.target.value)}
-                                />
-                            </div>
-
-                            <div className="home__field">
-                                <input type="number"
-                                       placeholder="Densité de population (en hab/km²)"
-                                       value={this.state.density}
-                                       onKeyUp={(e) => this.handleInputEnterPressed(e)}
-                                       onInput={(e) => this.handleChange('density', e.target.value)}
-                                />
-                            </div>
-
-                            <div className="home__field">
-                                <input type="number"
-                                       placeholder="Taux de pauvreté en % (INSEE 2015)"
-                                       value={this.state.poverty}
-                                       onKeyUp={(e) => this.handleInputEnterPressed(e)}
-                                       onInput={(e) => this.handleChange('poverty', e.target.value)}
-                                />
-                            </div>
-                            <button type="button" onClick={() => this.setState({ displayAutocomplete: true })}
-                                    className="home__switch-button page__button page__button--link">
-                                Ou indiquer le code INSEE du territoire
-                            </button>
-                        </div>
-                    )
-                }
+                <div className="home__field">
+                    <div className="home__field__label">
+                        Taux de pauvreté en % (INSEE 2015)
+                    </div>
+                    <input type="text"
+                           value={this.state.poverty}
+                           onKeyUp={(e) => this.handleInputEnterPressed(e)}
+                           onInput={(e) => this.setState({ poverty: e.target.value })}
+                    />
+                </div>
 
                 <br />
 
                 <div className="home__submit">
                     <button type="button" className="page__button" onClick={() => this.handleButtonClick()}>
                         Continuer
+                    </button>
+
+                    <button type="button" className="page__button page__button--small page__button--outline"
+                            onClick={() => this.handleBackClick()}>
+                        Retour
                     </button>
                 </div>
             </div>
