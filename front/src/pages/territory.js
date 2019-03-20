@@ -17,8 +17,8 @@ export default class Territory extends Component {
         }
 
         if (isNaN(parseInt(this.props.population))
-            || isNaN(parseInt(this.props.density))
-            || isNaN(parseInt(this.props.poverty))
+            || isNaN(parseFloat(this.props.density))
+            || isNaN(parseFloat(this.props.poverty))
             || isNaN(parseInt(this.props.previousBudget))) {
             route('/not-found', true);
         }

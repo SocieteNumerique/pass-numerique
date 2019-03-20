@@ -10,14 +10,14 @@ export default class Home extends Component {
         this.state = {
             scale: parseInt(this.props.scale),
             population: parseInt(this.props.population),
-            density: parseInt(this.props.density),
-            poverty: parseInt(this.props.poverty),
+            density: this.props.density ? parseFloat(this.props.density) + '' : null,
+            poverty: this.props.poverty ? parseFloat(this.props.poverty) + '' : null,
             previousBudget: parseInt(this.props.previousBudget),
             error: null,
         };
     }
 
-    handleChange(property, value) {
+    handleIntChange(property, value) {
         value = parseInt(value);
         if (isNaN(value) || value < 0) {
             value = null;
@@ -48,8 +48,20 @@ export default class Home extends Component {
             return;
         }
 
+        const density = parseFloat(this.state.density.replace(',', '.'));
+        if (isNaN(density)) {
+            this.setState({ error: 'Cette densité de population est invalide' });
+            return;
+        }
+
         if (!this.state.poverty) {
             this.setState({ error: 'Le taux de pauvreté est requis' });
+            return;
+        }
+
+        const poverty = parseFloat(this.state.poverty.replace(',', '.'));
+        if (isNaN(poverty)) {
+            this.setState({ error: 'Ce taux de pauvreté est invalide' });
             return;
         }
 
@@ -61,8 +73,8 @@ export default class Home extends Component {
         route('/territory/'+[
             this.state.scale,
             this.state.population,
-            this.state.density,
-            this.state.poverty,
+            density,
+            poverty,
             this.state.previousBudget,
         ].join('/'));
     }
@@ -81,7 +93,7 @@ export default class Home extends Component {
                 {this.state.error ? <div className="form-error">{this.state.error}</div> : ''}
 
                 <div className="home__field">
-                    <select onChange={(e) => this.handleChange('scale', e.target.value)}>
+                    <select onChange={(e) => this.handleIntChange('scale', e.target.value)}>
                         <option selected={!this.state.scale} disabled>
                             Échelle territoriale du porteur de projet
                         </option>
@@ -109,25 +121,25 @@ export default class Home extends Component {
                            placeholder="Nombre d'habitants"
                            value={this.state.population}
                            onKeyUp={(e) => this.handleInputEnterPressed(e)}
-                           onInput={(e) => this.handleChange('population', e.target.value)}
+                           onInput={(e) => this.handleIntChange('population', e.target.value)}
                     />
                 </div>
 
                 <div className="home__field">
-                    <input type="number"
+                    <input type="text"
                            placeholder="Densité de population (en hab/km²)"
                            value={this.state.density}
                            onKeyUp={(e) => this.handleInputEnterPressed(e)}
-                           onInput={(e) => this.handleChange('density', e.target.value)}
+                           onInput={(e) => this.setState({ density: e.target.value })}
                     />
                 </div>
 
                 <div className="home__field">
-                    <input type="number"
+                    <input type="text"
                            placeholder="Taux de pauvreté en % (INSEE 2015)"
                            value={this.state.poverty}
                            onKeyUp={(e) => this.handleInputEnterPressed(e)}
-                           onInput={(e) => this.handleChange('poverty', e.target.value)}
+                           onInput={(e) => this.setState({ poverty: e.target.value })}
                     />
                 </div>
 
@@ -136,7 +148,7 @@ export default class Home extends Component {
                            placeholder="Budget pass numérique en 2019 (en €)"
                            value={this.state.previousBudget}
                            onKeyUp={(e) => this.handleInputEnterPressed(e)}
-                           onInput={(e) => this.handleChange('previousBudget', e.target.value)}
+                           onInput={(e) => this.handleIntChange('previousBudget', e.target.value)}
                     />
                 </div>
 

@@ -9,8 +9,8 @@ export default class Result extends Component {
         }
 
         if (isNaN(parseInt(this.props.population))
-            || isNaN(parseInt(this.props.density))
-            || isNaN(parseInt(this.props.poverty))
+            || isNaN(parseFloat(this.props.density))
+            || isNaN(parseFloat(this.props.poverty))
             || isNaN(parseInt(this.props.previousBudget))) {
             route('/not-found', true);
         }
@@ -37,8 +37,8 @@ export default class Result extends Component {
         const result = calculator.compute({
             scale: parseInt(this.props.scale),
             population: parseInt(this.props.population),
-            density: parseInt(this.props.density),
-            poverty: parseInt(this.props.poverty) / 100,
+            density: parseFloat(this.props.density),
+            poverty: parseFloat(this.props.poverty) / 100,
             previousBudget: parseInt(this.props.previousBudget),
             isTargetPublic: this.props.isTargetPublic === '1',
             hasOrganizedLocally: this.props.hasOrganizedLocally === '1',
