@@ -59,7 +59,7 @@ export default class Territory extends Component {
         return (
             <div className="home">
                 <h1 className="home__title">
-                    Simulation Pass Numérique
+                    Simulation Pass Numériques
                 </h1>
 
                 <div className="home__subtitle">
