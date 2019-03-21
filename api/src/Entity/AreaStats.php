@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     collectionOperations={"get"},
  *     itemOperations={"get"}
  * )
- * @ApiFilter(SearchFilter::class, properties={"scale": "exact", "code": "partial"})
+ * @ApiFilter(SearchFilter::class, properties={"scale": "exact", "code": "exact"})
  *
  * @ORM\Table(name="areas_stats")
  * @ORM\Entity(repositoryClass="App\Repository\AreaStatsRepository")

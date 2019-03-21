@@ -256,8 +256,26 @@ select {
         &__label {
             text-align: left;
             font-size: 12px;
+            line-height: 16px;
             text-transform: uppercase;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
+        }
+
+        &__help {
+            text-align: left;
+            font-size: 12px;
+            line-height: 16px;
+            text-transform: uppercase;
+            margin: -10px 0 10px 0;
+
+            a {
+                color: #4d4d70;
+                font-size: 11px;
+
+                &:hover {
+                    color: $color-body;
+                }
+            }
         }
     }
 

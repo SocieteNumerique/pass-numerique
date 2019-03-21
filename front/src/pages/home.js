@@ -63,7 +63,7 @@ export default class Home extends Component {
             const results = response.data['hydra:member'];
 
             if (results.length > 0) {
-                this.setState({ autocompleteLoading: false, autocompleteResult: results[0] });
+                this.setState({ autocompleteLoading: false, autocompleteResult: this.createAverageResult(results) });
             } else {
                 this.setState({ autocompleteLoading: false, autocompleteResult: false });
             }
@@ -72,6 +72,29 @@ export default class Home extends Component {
         request.catch(() => {
             this.setState({ autocompleteLoading: false, autocompleteResult: false });
         });
+    }
+
+    createAverageResult(results) {
+        let avg = {
+            name: [],
+            population: 0,
+            density: 0,
+            poverty: 0
+        };
+
+        for (let i in results) {
+            avg.name.push(results[i].name);
+            avg.population += results[i].population;
+            avg.density += results[i].density;
+            avg.poverty += results[i].poverty;
+        }
+
+        avg.name = avg.name.join(', ');
+        avg.population = Math.round(avg.population / results.length);
+        avg.density = Math.round((avg.density / results.length) * 100) / 100;
+        avg.poverty = Math.round((avg.poverty / results.length) * 100) / 100;
+
+        return avg;
     }
 
     handleButtonClick() {
@@ -149,7 +172,20 @@ export default class Home extends Component {
 
                 <div className="home__field">
                     <div className="home__field__label">
-                        Code INSEE du territoire concerné
+                        {this.state.scale === Calculator.SCALE_INTERMUNICIPAL
+                            ? 'Code INSEE de l\'intercommunalité' : ''}
+
+                        {this.state.scale === Calculator.SCALE_DEPARTMENTAL
+                            ? 'Code INSEE du département' : ''}
+
+                        {this.state.scale === Calculator.SCALE_INTERDEPARTMENTAL
+                            ? 'Codes INSEE des départements, séparés par des virgules' : ''}
+
+                        {this.state.scale === Calculator.SCALE_REGIONAL
+                            ? 'Code INSEE de la région' : ''}
+
+                        {this.state.scale === null
+                            ? 'Code INSEE du territoire' : ''}
                     </div>
                     <input type="text"
                            disabled={this.state.autocompleteDisabled}
@@ -157,6 +193,9 @@ export default class Home extends Component {
                            value={this.state.autocompleteCode}
                            onInput={(e) => this.handleAutocompleteChange(e)}
                     />
+                    <div className="home__field__help">
+                        <a href="https://statistiques-locales.insee.fr/#view=map1&c=indicator" target="_blank">trouver votre code INSEE</a>
+                    </div>
                 </div>
                 <div className="home__territory-result">
                     {this.state.autocompleteResult
