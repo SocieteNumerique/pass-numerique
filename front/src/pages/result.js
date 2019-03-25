@@ -154,13 +154,8 @@ export default class Result extends Component {
                 <br />
 
                 <div>
-                    <button type="button" onClick={() => this.handlePdfClick()}
-                            className="page__button page__button--small startover--reduction">
-                        Générer un PDF avec ces résultats
-                    </button>
-
                     <button type="button" onClick={() => window.location.href = '/'}
-                            className="page__button page__button--small page__button--outline">
+                            className="page__button page__button--small startover--reduction">
                         Recommencer
                     </button>
 
