@@ -27,3 +27,6 @@ services:
             - POSTGRES_DB=passnumerique
             - POSTGRES_USER=passnumerique
             - POSTGRES_PASSWORD=passnumerique
+
+    pdf:
+        image: thecodingmachine/gotenberg:4

@@ -1,6 +1,9 @@
 import { h, Component } from 'preact';
 import { route } from 'preact-router';
-import {Calculator} from "../simulator/calculator";
+import {Calculator} from '../simulator/calculator';
+
+const isDev = document.body.getAttribute('data-env') === 'dev';
+const apiRoot = isDev ? 'http://localhost:8000' : 'https://api.passnum.societenumerique.gouv.fr';
 
 export default class Result extends Component {
     componentWillMount() {
@@ -29,6 +32,45 @@ export default class Result extends Component {
             this.props.areOthersAssociated,
             this.props.hasEuFunds,
         ].join('/'));
+    }
+
+    handlePdfClick() {
+        const calculator = new Calculator();
+
+        const result = calculator.compute({
+            scale: parseInt(this.props.scale),
+            population: parseInt(this.props.population),
+            density: parseFloat(this.props.density),
+            poverty: parseFloat(this.props.poverty) / 100,
+            previousBudget: parseInt(this.props.previousBudget),
+            isTargetPublic: this.props.isTargetPublic === '1',
+            hasOrganizedLocally: this.props.hasOrganizedLocally === '1',
+            hasHub: this.props.hasHub === '1',
+            areOthersAssociated: this.props.areOthersAssociated === '1',
+            hasEuFunds: this.props.hasEuFunds === '1',
+        });
+
+        const total = parseInt(this.props.previousBudget) + result.stateAmount;
+
+        let payload = {
+            scale: parseInt(this.props.scale),
+            population: parseInt(this.props.population),
+            density: parseFloat(this.props.density),
+            poverty: parseFloat(this.props.poverty) / 100,
+            previousBudget: parseInt(this.props.previousBudget),
+            isTargetPublic: this.props.isTargetPublic === '1',
+            hasOrganizedLocally: this.props.hasOrganizedLocally === '1',
+            hasHub: this.props.hasHub === '1',
+            areOthersAssociated: this.props.areOthersAssociated === '1',
+            hasEuFunds: this.props.hasEuFunds === '1',
+            stateAmount: result.stateAmount,
+            totalAmount: total,
+            stateRate: result.stateRate,
+            numberPasses: Math.floor((total * 0.9) / 10),
+            numberPersons: Math.floor((total * 0.9) / 100),
+        };
+
+        window.open(apiRoot + '/pdf/preview?payload=' + encodeURIComponent(JSON.stringify(payload)), '_blank');
     }
 
     render() {
@@ -112,9 +154,13 @@ export default class Result extends Component {
                 <br />
 
                 <div>
-                    <button type="button"
-                            onClick={() => window.location.href = '/'}
+                    <button type="button" onClick={() => this.handlePdfClick()}
                             className="page__button page__button--small startover--reduction">
+                        Générer un PDF avec ces résultats
+                    </button>
+
+                    <button type="button" onClick={() => window.location.href = '/'}
+                            className="page__button page__button--small page__button--outline">
                         Recommencer
                     </button>
 
