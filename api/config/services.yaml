@@ -4,6 +4,8 @@ services:
     _defaults:
         autowire: true
         autoconfigure: true
+        bind:
+            $cacheDir: '%kernel.cache_dir%'
 
     App\:
         resource: '../src/*'
