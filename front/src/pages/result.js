@@ -21,6 +21,7 @@ export default class Result extends Component {
 
     handleBackClick() {
         route('/bonus/'+[
+            this.props.territory,
             this.props.scale,
             this.props.population,
             this.props.density,
@@ -53,6 +54,7 @@ export default class Result extends Component {
         const total = parseInt(this.props.previousBudget) + result.stateAmount;
 
         let payload = {
+            territory: this.props.territory,
             scale: parseInt(this.props.scale),
             population: parseInt(this.props.population),
             density: parseFloat(this.props.density),
@@ -154,8 +156,13 @@ export default class Result extends Component {
                 <br />
 
                 <div>
-                    <button type="button" onClick={() => window.location.href = '/'}
+                    <button type="button" onClick={() => this.handlePdfClick()}
                             className="page__button page__button--small startover--reduction">
+                        Générer un PDF avec ces résultats
+                    </button>
+
+                    <button type="button" onClick={() => window.location.href = '/'}
+                            className="page__button page__button--small page__button--outline">
                         Recommencer
                     </button>
 

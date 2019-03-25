@@ -31,6 +31,7 @@ export default class Bonus extends Component {
 
     handleButtonClick() {
         route('/result/'+[
+            this.props.territory,
             this.props.scale,
             this.props.population,
             this.props.density,
@@ -46,6 +47,7 @@ export default class Bonus extends Component {
 
     handleBackClick() {
         route('/community/'+[
+            this.props.territory,
             this.props.scale,
             this.props.population,
             this.props.density,

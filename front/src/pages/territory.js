@@ -61,6 +61,7 @@ export default class Territory extends Component {
         }
 
         route('/community/'+[
+            this.props.territory,
             this.props.scale,
             this.props.previousBudget,
             density,
@@ -70,7 +71,7 @@ export default class Territory extends Component {
     }
 
     handleBackClick() {
-        route('/home/'+[this.props.scale, this.props.previousBudget].join('/'));
+        route('/home/'+[this.props.territory, this.props.scale, this.props.previousBudget].join('/'));
     }
 
     render() {

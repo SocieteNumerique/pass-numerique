@@ -18,14 +18,14 @@ export default class App extends Component {
                         <Router>
                             <Home path="/" />
                             <Home path="/pass-numerique" />
-                            <Home path="/home/:scale/:previousBudget" />
-                            <Territory path="/territory/:scale/:previousBudget" />
-                            <Territory path="/territory/:scale/:previousBudget/:density/:poverty/:population" />
-                            <Community path="/community/:scale/:previousBudget/:density/:poverty/:population" />
-                            <Community path="/community/:scale/:previousBudget/:density/:poverty/:population/:isTargetPublic/:hasOrganizedLocally" />
-                            <Bonus path="/bonus/:scale/:population/:density/:poverty/:previousBudget/:isTargetPublic/:hasOrganizedLocally" />
-                            <Bonus path="/bonus/:scale/:population/:density/:poverty/:previousBudget/:isTargetPublic/:hasOrganizedLocally/:hasHub/:areOthersAssociated/:hasEuFunds" />
-                            <Result path="/result/:scale/:population/:density/:poverty/:previousBudget/:isTargetPublic/:hasOrganizedLocally/:hasHub/:areOthersAssociated/:hasEuFunds" />
+                            <Home path="/home/:territory/:scale/:previousBudget" />
+                            <Territory path="/territory/:territory/:scale/:previousBudget" />
+                            <Territory path="/territory/:territory/:scale/:previousBudget/:density/:poverty/:population" />
+                            <Community path="/community/:territory/:scale/:previousBudget/:density/:poverty/:population" />
+                            <Community path="/community/:territory/:scale/:previousBudget/:density/:poverty/:population/:isTargetPublic/:hasOrganizedLocally" />
+                            <Bonus path="/bonus/:territory/:scale/:population/:density/:poverty/:previousBudget/:isTargetPublic/:hasOrganizedLocally" />
+                            <Bonus path="/bonus/:territory/:scale/:population/:density/:poverty/:previousBudget/:isTargetPublic/:hasOrganizedLocally/:hasHub/:areOthersAssociated/:hasEuFunds" />
+                            <Result path="/result/:territory/:scale/:population/:density/:poverty/:previousBudget/:isTargetPublic/:hasOrganizedLocally/:hasHub/:areOthersAssociated/:hasEuFunds" />
                             <Disqualified path="/disqualified" />
                             <NotFound default />
                         </Router>

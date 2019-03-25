@@ -35,6 +35,7 @@ export default class Community extends Component {
         }
 
         route('/bonus/'+[
+            this.props.territory,
             this.props.scale,
             this.props.population,
             this.props.density,
@@ -47,6 +48,7 @@ export default class Community extends Component {
 
     handleBackClick() {
         route('/territory/'+[
+            this.props.territory,
             this.props.scale,
             this.props.population,
             this.props.density,

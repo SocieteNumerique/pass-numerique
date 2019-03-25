@@ -21,6 +21,12 @@ export default class Home extends Component {
         };
     }
 
+    componentDidMount() {
+        if (this.props.territory !== '0' && this.state.scale) {
+            this.findArea(this.state.scale, this.props.territory);
+        }
+    }
+
     handleIntChange(property, value, enableAutocomplete) {
         value = parseInt(value);
         if (isNaN(value) || value < 0) {
@@ -76,6 +82,7 @@ export default class Home extends Component {
 
     createAverageResult(results) {
         let avg = {
+            codes: [],
             name: [],
             population: 0,
             density: 0,
@@ -83,6 +90,7 @@ export default class Home extends Component {
         };
 
         for (let i in results) {
+            avg.codes.push(results[i].code);
             avg.name.push(results[i].name);
             avg.population += results[i].population;
             avg.density += results[i].density;
@@ -109,9 +117,10 @@ export default class Home extends Component {
         }
 
         if (!this.state.autocompleteResult) {
-            route('/territory/'+[this.state.scale, this.state.previousBudget].join('/'));
+            route('/territory/0/'+[this.state.scale, this.state.previousBudget].join('/'));
         } else {
             route('/territory/'+[
+                this.state.autocompleteResult.codes.join(','),
                 this.state.scale,
                 this.state.previousBudget,
                 this.state.autocompleteResult.density ? this.state.autocompleteResult.density : -1,
