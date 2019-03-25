@@ -1,0 +1,66 @@
+version: '2'
+
+networks:
+    web:
+        external: true
+
+services:
+    traefik:
+        image: traefik:1.5.4
+        container_name: traefik
+        restart: always
+        ports:
+            - 80:80
+            - 443:443
+        networks:
+            - web
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - ./traefik.toml:/traefik.toml
+            - ./acme.json:/acme.json
+
+    front:
+        image: sonum/pass-numerique:front-master
+        restart: always
+        networks:
+            - web
+            - default
+        expose:
+            - "80"
+        labels:
+            - "traefik.docker.network=web"
+            - "traefik.enable=true"
+            - "traefik.basic.frontend.rule=Host:passnum.societenumerique.gouv.fr"
+            - "traefik.basic.port=80"
+            - "traefik.basic.protocol=http"
+
+    api:
+        image: sonum/pass-numerique:api-master
+        restart: always
+        depends_on:
+            - db
+        networks:
+            - web
+            - default
+        expose:
+            - "80"
+        labels:
+            - "traefik.docker.network=web"
+            - "traefik.enable=true"
+            - "traefik.basic.frontend.rule=Host:api.passnum.societenumerique.gouv.fr"
+            - "traefik.basic.port=80"
+            - "traefik.basic.protocol=http"
+
+    db:
+        image: postgres:11-alpine
+        restart: always
+        volumes:
+            - ./data:/var/lib/postgresql/data
+        environment:
+            - POSTGRES_DB=passnumerique
+            - POSTGRES_USER=passnumerique
+            - POSTGRES_PASSWORD=passnumerique
+
+    pdf:
+        image: thecodingmachine/gotenberg:4
+        restart: always
