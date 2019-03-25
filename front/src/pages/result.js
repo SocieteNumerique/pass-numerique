@@ -70,7 +70,7 @@ export default class Result extends Component {
             numberPersons: Math.floor((total * 0.9) / 100),
         };
 
-        window.open(apiRoot + '/pdf/preview?payload=' + encodeURIComponent(JSON.stringify(payload)), '_blank');
+        window.open(apiRoot + '/pdf?payload=' + encodeURIComponent(JSON.stringify(payload)), '_blank');
     }
 
     render() {
