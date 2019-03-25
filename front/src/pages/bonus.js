@@ -45,7 +45,7 @@ export default class Bonus extends Component {
     }
 
     handleBackClick() {
-        route('/territory/'+[
+        route('/community/'+[
             this.props.scale,
             this.props.population,
             this.props.density,
