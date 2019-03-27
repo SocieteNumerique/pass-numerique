@@ -163,7 +163,8 @@
                 {% if territories %}
                     <div class="result__field">
                         <div class="result__field__label">
-                            Territoire(s) concernés
+                            Territoire{{ territories|length > 1 ? 's' }}
+                            concerné{{ territories|length > 1 ? 's' }}
                         </div>
                         <div class="result__field__value">
                             {{ territories|join(', ') }}
