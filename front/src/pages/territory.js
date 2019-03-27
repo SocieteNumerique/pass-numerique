@@ -32,6 +32,12 @@ export default class Territory extends Component {
         }
     }
 
+    handleInputEnterPressed(event) {
+        if (event.keyCode === 13) {
+            this.handleButtonClick();
+        }
+    }
+
     handleButtonClick() {
         if (!this.state.population) {
             this.setState({ error: 'Le nombre d\'habitants est requis' });

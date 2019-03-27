@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Pdf\PdfRequestHandler;
+use App\Repository\AreaStatsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,7 +13,7 @@ class PdfController extends AbstractController
     /**
      * @Route("/pdf", name="pdf_preview")
      */
-    public function preview(PdfRequestHandler $pdfRequestHandler, Request $request)
+    public function preview(PdfRequestHandler $pdfRequestHandler, AreaStatsRepository $repository, Request $request)
     {
         if (!$request->query->get('payload')) {
             throw $this->createNotFoundException();
@@ -24,7 +25,10 @@ class PdfController extends AbstractController
         }
 
         if ($request->query->has('preview')) {
-            return $this->render('pdf.html.twig', ['data' => $data]);
+            $codes = array_map('trim', explode(',', $data['territory']));
+            $territories = $repository->findTerritoriesNames($data['scale'], $codes);
+
+            return $this->render('pdf.html.twig', ['data' => $data, 'territories' => $territories]);
         }
 
         return $pdfRequestHandler->createPdfResponse($data);

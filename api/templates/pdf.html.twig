@@ -107,7 +107,7 @@
             color: #21295e;
         }
         .result__field {
-            margin: 0 0 8mm 0;
+            margin: 0 0 6.5mm 0;
         }
         .result__field__label {
             color: #7171a2;
@@ -159,6 +159,17 @@
                         {{ scales[data.scale|default(1)] }}
                     </div>
                 </div>
+
+                {% if territories %}
+                    <div class="result__field">
+                        <div class="result__field__label">
+                            Territoire(s) concernés
+                        </div>
+                        <div class="result__field__value">
+                            {{ territories|join(', ') }}
+                        </div>
+                    </div>
+                {% endif %}
 
                 <div class="result__field">
                     <div class="result__field__label">
