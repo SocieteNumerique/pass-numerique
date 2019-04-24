@@ -93,8 +93,8 @@ describe('Calculator', () => {
                 hasEuFunds: true,
             },
             expectedOutput: {
-                stateRate: 0.66,
-                stateAmount: 66052,
+                stateRate: 0.64,
+                stateAmount: 60492,
             },
         },
 
@@ -112,8 +112,8 @@ describe('Calculator', () => {
                 hasEuFunds: true,
             },
             expectedOutput: {
-                stateRate: 0.67,
-                stateAmount:  406061,
+                stateRate: 0.65,
+                stateAmount:  371429,
             },
         },
     };

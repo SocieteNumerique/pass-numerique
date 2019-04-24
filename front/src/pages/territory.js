@@ -49,14 +49,22 @@ export default class Territory extends Component {
             return;
         }
 
-        const density = parseFloat(this.state.density.replace(',', '.'));
-        if (isNaN(density)) {
-            this.setState({ error: 'Cette densité de population est invalide' });
+        if (!this.state.poverty) {
+            this.setState({ error: 'Le taux de pauvreté est requis' });
             return;
         }
 
-        if (!this.state.poverty) {
-            this.setState({ error: 'Le taux de pauvreté est requis' });
+        route('/community/'+this.getArgs().join('/'));
+    }
+
+    handleBackClick() {
+        route('/home/'+this.getArgs().join('/'));
+    }
+
+    getArgs() {
+        const density = parseFloat(this.state.density.replace(',', '.'));
+        if (isNaN(density)) {
+            this.setState({ error: 'Cette densité de population est invalide' });
             return;
         }
 
@@ -66,18 +74,19 @@ export default class Territory extends Component {
             return;
         }
 
-        route('/community/'+[
+        return [
             this.props.territory,
             this.props.scale,
             this.props.previousBudget,
             density,
             poverty,
             this.state.population,
-        ].join('/'));
-    }
-
-    handleBackClick() {
-        route('/home/'+[this.props.territory, this.props.scale, this.props.previousBudget].join('/'));
+            this.props.isTargetPublic ? +this.props.isTargetPublic : 0,
+            this.props.hasOrganizedLocally ? +this.props.hasOrganizedLocally : 0,
+            this.props.hasHub ? parseInt(this.props.hasHub) : 0,
+            this.props.areOthersAssociated ? parseInt(this.props.areOthersAssociated) : 0,
+            this.props.hasEuFunds ? parseInt(this.props.hasEuFunds) : 0,
+        ];
     }
 
     render() {

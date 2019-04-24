@@ -30,7 +30,15 @@ export default class Bonus extends Component {
     }
 
     handleButtonClick() {
-        route('/result/'+[
+        route('/result/'+this.getArgs().join('/'));
+    }
+
+    handleBackClick() {
+        route('/community/'+this.getArgs().join('/'));
+    }
+
+    getArgs() {
+        return [
             this.props.territory,
             this.props.scale,
             this.props.population,
@@ -42,20 +50,7 @@ export default class Bonus extends Component {
             this.state.hasHub ? 1 : 0,
             this.state.areOthersAssociated ? 1 : 0,
             this.state.hasEuFunds ? 1 : 0,
-        ].join('/'));
-    }
-
-    handleBackClick() {
-        route('/community/'+[
-            this.props.territory,
-            this.props.scale,
-            this.props.population,
-            this.props.density,
-            this.props.poverty,
-            this.props.previousBudget,
-            this.props.isTargetPublic,
-            this.props.hasOrganizedLocally,
-        ].join('/'));
+        ];
     }
 
     render() {
@@ -71,7 +66,7 @@ export default class Bonus extends Component {
 
                 <div className="home__checkbox">
                     <div className="form-checkbox">
-                        <input type="checkbox" id="hasHub"
+                        <input type="checkbox" id="hasHub" checked={this.state.hasHub}
                                onChange={() => this.handleChange('hasHub')} />
                         <label htmlFor="hasHub">
                             <div>
@@ -83,7 +78,7 @@ export default class Bonus extends Component {
 
                 <div className="home__checkbox">
                     <div className="form-checkbox">
-                        <input type="checkbox" id="areOthersAssociated"
+                        <input type="checkbox" id="areOthersAssociated" checked={this.state.areOthersAssociated}
                                onChange={() => this.handleChange('areOthersAssociated')} />
                         <label htmlFor="areOthersAssociated">
                             <div>
@@ -96,7 +91,7 @@ export default class Bonus extends Component {
 
                 <div className="home__checkbox">
                     <div className="form-checkbox">
-                        <input type="checkbox" id="hasEuFunds"
+                        <input type="checkbox" id="hasEuFunds" checked={this.state.hasEuFunds}
                                onChange={() => this.handleChange('hasEuFunds')} />
                         <label htmlFor="hasEuFunds">
                             <div>

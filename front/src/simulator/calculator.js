@@ -12,7 +12,7 @@ export class Calculator {
         rate += this._computeTerritoryBonus(input);
 
         if (input.hasHub) {
-            rate += 0.07;
+            rate += 0.05;
         }
 
         if (input.areOthersAssociated) {
@@ -122,4 +122,4 @@ Calculator.NATIONAL_STATS = {
     },
 };
 
-Calculator.MAX_AMOUNT = 1500000;
+Calculator.MAX_AMOUNT = 1200000;
