@@ -34,27 +34,27 @@ export default class Community extends Component {
             return;
         }
 
-        route('/bonus/'+[
-            this.props.territory,
-            this.props.scale,
-            this.props.population,
-            this.props.density,
-            this.props.poverty,
-            this.props.previousBudget,
-            this.state.isTargetPublic ? 1 : 0,
-            this.state.hasOrganizedLocally ? 1 : 0,
-        ].join('/'));
+        route('/bonus/'+this.getArgs().join('/'));
     }
 
     handleBackClick() {
-        route('/territory/'+[
+        route('/territory/'+this.getArgs().join('/'));
+    }
+
+    getArgs() {
+        return [
             this.props.territory,
             this.props.scale,
-            this.props.population,
+            this.props.previousBudget,
             this.props.density,
             this.props.poverty,
-            this.props.previousBudget,
-        ].join('/'));
+            this.props.population,
+            this.state.isTargetPublic ? +this.state.isTargetPublic : 0,
+            this.state.hasOrganizedLocally ? +this.state.hasOrganizedLocally : 0,
+            this.props.hasHub ? parseInt(this.props.hasHub) : 0,
+            this.props.areOthersAssociated ? parseInt(this.props.areOthersAssociated) : 0,
+            this.props.hasEuFunds ? parseInt(this.props.hasEuFunds) : 0,
+        ];
     }
 
     render() {

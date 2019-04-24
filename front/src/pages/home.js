@@ -117,7 +117,18 @@ export default class Home extends Component {
         }
 
         if (!this.state.autocompleteResult) {
-            route('/territory/0/'+[this.state.scale, this.state.previousBudget].join('/'));
+            route('/territory/0/'+[
+                this.state.scale,
+                this.state.previousBudget,
+                this.props.density ? parseInt(this.props.density) : -1,
+                this.props.poverty ? parseInt(this.props.poverty) : -1,
+                this.props.population ? parseInt(this.props.population) : -1,
+                this.props.isTargetPublic ? +this.props.isTargetPublic : 0,
+                this.props.hasOrganizedLocally ? +this.props.hasOrganizedLocally : 0,
+                this.props.hasHub ? parseInt(this.props.hasHub) : 0,
+                this.props.areOthersAssociated ? parseInt(this.props.areOthersAssociated) : 0,
+                this.props.hasEuFunds ? parseInt(this.props.hasEuFunds) : 0,
+            ].join('/'));
         } else {
             route('/territory/'+[
                 this.state.autocompleteResult.codes.join(','),
@@ -126,6 +137,11 @@ export default class Home extends Component {
                 this.state.autocompleteResult.density ? this.state.autocompleteResult.density : -1,
                 this.state.autocompleteResult.poverty ? this.state.autocompleteResult.poverty : -1,
                 this.state.autocompleteResult.population ? this.state.autocompleteResult.population : -1,
+                this.props.isTargetPublic ? +this.props.isTargetPublic : 0,
+                this.props.hasOrganizedLocally ? +this.props.hasOrganizedLocally : 0,
+                this.props.hasHub ? parseInt(this.props.hasHub) : 0,
+                this.props.areOthersAssociated ? parseInt(this.props.areOthersAssociated) : 0,
+                this.props.hasEuFunds ? parseInt(this.props.hasEuFunds) : 0,
             ].join('/'));
         }
     }
