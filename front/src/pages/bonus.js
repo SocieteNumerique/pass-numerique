@@ -41,10 +41,10 @@ export default class Bonus extends Component {
         return [
             this.props.territory,
             this.props.scale,
-            this.props.population,
+            this.props.previousBudget,
             this.props.density,
             this.props.poverty,
-            this.props.previousBudget,
+            this.props.population,
             this.props.isTargetPublic,
             this.props.hasOrganizedLocally,
             this.state.hasHub ? 1 : 0,

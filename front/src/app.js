@@ -21,8 +21,8 @@ export default class App extends Component {
                             <Home path="/home/:territory/:scale/:previousBudget/:density?/:poverty?/:population?/:isTargetPublic?/:hasOrganizedLocally?/:hasHub?/:areOthersAssociated?/:hasEuFunds?" />
                             <Territory path="/territory/:territory/:scale/:previousBudget/:density?/:poverty?/:population?/:isTargetPublic?/:hasOrganizedLocally?/:hasHub?/:areOthersAssociated?/:hasEuFunds?" />
                             <Community path="/community/:territory/:scale/:previousBudget/:density/:poverty/:population/:isTargetPublic?/:hasOrganizedLocally?/:hasHub?/:areOthersAssociated?/:hasEuFunds?" />
-                            <Bonus path="/bonus/:territory/:scale/:population/:density/:poverty/:previousBudget/:isTargetPublic/:hasOrganizedLocally/:hasHub?/:areOthersAssociated?/:hasEuFunds?" />
-                            <Result path="/result/:territory/:scale/:population/:density/:poverty/:previousBudget/:isTargetPublic/:hasOrganizedLocally/:hasHub/:areOthersAssociated/:hasEuFunds" />
+                            <Bonus path="/bonus/:territory/:scale/:previousBudget/:density/:poverty/:population/:isTargetPublic/:hasOrganizedLocally/:hasHub?/:areOthersAssociated?/:hasEuFunds?" />
+                            <Result path="/result/:territory/:scale/:previousBudget/:density/:poverty/:population/:isTargetPublic/:hasOrganizedLocally/:hasHub/:areOthersAssociated/:hasEuFunds" />
                             <Disqualified path="/disqualified" />
                             <NotFound default />
                         </Router>
