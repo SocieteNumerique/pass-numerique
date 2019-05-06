@@ -23,10 +23,10 @@ export default class Result extends Component {
         route('/bonus/'+[
             this.props.territory,
             this.props.scale,
-            this.props.population,
+            this.props.previousBudget,
             this.props.density,
             this.props.poverty,
-            this.props.previousBudget,
+            this.props.population,
             this.props.isTargetPublic,
             this.props.hasOrganizedLocally,
             this.props.hasHub,
