@@ -41,7 +41,7 @@ Puis accédez à [http://localhost](http://localhost).
 
 ## Remerciements
 
-Ce projet est un fork du projet simuletataxe.fr développé de manière open-source par En Marche :
+Ce projet est un fork du projet simuletataxe.fr développé de manière open-source et accessible dans le repository suivant :
 [github.com/EnMarche/simuletataxe.fr](https://github.com/EnMarche/simuletataxe.fr).
 
 Ce projet est de plus basé sur plusieurs projets open-source sans lesquels il ne pourrait pas avoir vu le jour :
