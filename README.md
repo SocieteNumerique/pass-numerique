@@ -1,8 +1,22 @@
 # Simulateur de cofinancement du Pass Numérique
 
-Ce repository est l'application [Symfony](http://symfony.com) et 
+![](https://societenumerique.gouv.fr/wp-content/uploads/2018/01/logomarianne_typo-sombre.png)
+
+
+Ce dépôt est l'application [Symfony](http://symfony.com) et 
 [Preact](https://github.com/developit/preact) qui propulse le 
-simulateur de cofinancement du Pass Numérique par l'État.
+simulateur de cofinancement du Pass Numérique par la Mission Société Numérique.
+
+L'objectif était de permettre aux collectivités territoriales de connaître rapidement le taux de co-financement auquel elles sont éligibles et de télécharger un document de synthèse des résultats à fournir afin de faciliter l'instruction des dossiers. Le simulateur est accessible en [suivant ce lien](https://www.societenumerique.gouv.fr/archive-pass/)
+
+## Documentation de l'algorithme
+
+Le taux de co-financement auquel les collectivités territoriales sont éligibles est calculé par l'application en fonction de critères décrits dans le [document suivant](https://github.com/SocieteNumerique/pass-numerique/blob/master/Documentation/app_pass(1).pdf/) et réplicables avec la [feuille de calcul suivante](https://github.com/SocieteNumerique/pass-numerique/blob/master/Documentation/fichiersimulation.xlsx).
+
+## Capture d'écran
+
+
+![](https://github.com/SocieteNumerique/pass-numerique/raw/master/Documentation/passnum.gif)
 
 ## Utilisation
 
