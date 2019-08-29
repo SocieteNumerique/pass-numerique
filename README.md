@@ -7,7 +7,7 @@ Ce dépôt est l'application [Symfony](http://symfony.com) et
 [Preact](https://github.com/developit/preact) qui propulse le 
 simulateur de cofinancement du Pass Numérique par la Mission Société Numérique.
 
-L'objectif était de permettre aux collectivités territoriales de connaître rapidement le taux de co-financement auquel elles sont éligibles et de télécharger un document de synthèse des résultats à fournir afin de faciliter l'instruction des dossiers. Le simulateur est accessible en [suivant ce lien](https://www.societenumerique.gouv.fr/archive-pass/)
+L'objectif était de permettre aux collectivités territoriales de connaître rapidement le taux de co-financement auquel elles sont éligibles et de télécharger un document de synthèse des résultats à fournir afin de faciliter l'instruction des dossiers. Le simulateur est accessible en [suivant ce lien](https://passnum.societenumerique.gouv.fr/)
 
 ## Documentation de l'algorithme
 
